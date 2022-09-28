@@ -3,7 +3,6 @@ package domain.publicaciones;
 import domain.productos.AreaDePersonalizacion;
 import domain.productos.Producto;
 import domain.usuario.GestorDeUsuarios;
-import domain.usuario.Scanner;
 import domain.usuario.Vendedor;
 import lombok.Getter;
 import lombok.Setter;
@@ -67,14 +66,11 @@ public class Publicacion {
     }
     public void agregarAreasDePersonalizacion() {
         if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
-            //POR CADA AREA DISPONIBLE EN EL PRODUCTO_BASE
-            productoBase.getAreasBase().forEach(a-> {
-                //SE INSTANCIA UN NUEVO PRECIO_DEL_AREA
+             productoBase.getAreasBase().forEach(a-> {
                 PreciosPorArea nuevoPrecioPorArea = new PreciosPorArea();
                 this.setPrecioPersonalizacion(precioPersonalizacion);
                 this.setNombreNuevoPersonalizacion(nombreNuevoPersonalizacion);
                 setNuevoPrecioPorArea(nuevoPrecioPorArea, precioPersonalizacion, nombreNuevoPersonalizacion,a);
-            //SE LO AGREGA A LA COLECCION DE PRECIOS_POR_PERSONALIZACION
                 preciosPorPersonalizacion.add(nuevoPrecioPorArea);
             });
         }
@@ -125,7 +121,6 @@ public class Publicacion {
         System.out.println(this.productoBase.getTiempoDeFabricacion() + "dias");
 
         System.out.println(this.getPrecioPersonalizacion() + "pesos");
-        this.printAreasDePersonalizacion();
         this.printFrasesDePersonalizacion();
         this.printImagenesDePersonalizacion();
     }

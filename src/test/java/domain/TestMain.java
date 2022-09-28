@@ -11,52 +11,52 @@ import domain.usuario.Usuario;
 public class TestMain {
     public static void main(String[] args) {
 
-        Usuario uno = new Gestor("Carlos", "125adsfas",  TipoDeUsuario.GESTOR);
-        GestorDeUsuarios autenticador = new GestorDeUsuarios();
-        autenticador.agregarNuevoUsuario(uno);
-        uno.setId("Luciano");
-        uno.setTipoDeUsuario(TipoDeUsuario.GESTOR);
+//        Usuario uno = new Gestor("Carlos", "125adsfas",  TipoDeUsuario.GESTOR);
+//        GestorDeUsuarios autenticador = new GestorDeUsuarios();
+//        autenticador.agregarNuevoUsuario(uno);
+//        uno.setId("Luciano");
+//        uno.setTipoDeUsuario(TipoDeUsuario.GESTOR);
+//
+//        Producto remera = new Producto(autenticador);
+//        Producto gorra = new Producto(autenticador);
+//
+//        Producto zapatillas = new Producto(autenticador);
+//        Producto otros = new Producto(autenticador);
+//
+//        remera.setUser("Luciano");
+//
+//
+//        remera.setNombre("Remera");
+//        remera.setDescripcion("ropa para llevar arriba de la cintura");
+//        remera.setPrecioBase(500);
+//        remera.setTiempoDeFabricacion(4);
+//
+//        AreaDePersonalizacion pecho = new AreaDePersonalizacion();
+//        pecho.setNombre("pecho");
+//
+//        TipoDePersonalizacion pintura = new TipoDePersonalizacion();
+//        pintura.setNombre("pintura:");
+//        pintura.setDescripcion("pintura sublimada");
+//        pecho.agregarTipoDePersonalizacion(pintura);
+//
+//        TipoDePersonalizacion stencil = new TipoDePersonalizacion();
+//        stencil.setNombre("stencil:");
+//        stencil.setDescripcion("aerografo");
+//        pecho.agregarTipoDePersonalizacion(stencil);
+//
+//        AreaDePersonalizacion espalda = new AreaDePersonalizacion();
+//        espalda.setNombre("espalda");
+//
+//        remera.agregarAreaDePersonalizacion(pecho);
+//        remera.agregarAreaDePersonalizacion(espalda);
+//
+//        remera.printProducto();
+//
+//        AreaDePersonalizacion areaDePersonalizacion = new AreaDePersonalizacion();
+//        //String inputDelUsuario = lee del usuario el nombre del producto
+////        areaDePersonalizacion.setNombre(inputDelUsuario);
+//    }
 
-        Producto remera = new Producto(autenticador);
-        Producto gorra = new Producto(autenticador);
-
-        Producto zapatillas = new Producto(autenticador);
-        Producto otros = new Producto(autenticador);
-
-        remera.setUser("Luciano");
-
-
-        remera.setNombre("Remera");
-        remera.setDescripcion("ropa para llevar arriba de la cintura");
-        remera.setPrecioBase(500);
-        remera.setTiempoDeFabricacion(4);
-
-        AreaDePersonalizacion pecho = new AreaDePersonalizacion();
-        pecho.setNombre("pecho");
-
-        TipoDePersonalizacion pintura = new TipoDePersonalizacion();
-        pintura.setNombre("pintura:");
-        pintura.setDescripcion("pintura sublimada");
-        pecho.agregarTipoDePersonalizacion(pintura);
-
-        TipoDePersonalizacion stencil = new TipoDePersonalizacion();
-        stencil.setNombre("stencil:");
-        stencil.setDescripcion("aerografo");
-        pecho.agregarTipoDePersonalizacion(stencil);
-
-        AreaDePersonalizacion espalda = new AreaDePersonalizacion();
-        espalda.setNombre("espalda");
-
-        remera.agregarAreaDePersonalizacion(pecho);
-        remera.agregarAreaDePersonalizacion(espalda);
-
-        remera.printProducto();
-
-        AreaDePersonalizacion areaDePersonalizacion = new AreaDePersonalizacion();
-        //String inputDelUsuario = lee del usuario el nombre del producto
-//        areaDePersonalizacion.setNombre(inputDelUsuario);
-    }
-    }
 
 //
 //    public static void main(String[] args) {
@@ -95,3 +95,5 @@ public class TestMain {
 //        return producto;
 //    }
 //}
+    }
+}
