@@ -28,7 +28,7 @@ public class CarritoDeCompras {
         // en su lista de carritos?
     }
     public void setMonto(int monto) {
-        publicacionesCarrito.forEach(publicacion -> this.monto= monto+ publicacion.getPrecio());
+        publicacionesCarrito.forEach(publicacion -> this.monto= monto+ publicacion.getPrecioPersonalizacion());
     }
     public void setEstado(EstadoCarrito estado){
         this.estadoCarrito = estado;

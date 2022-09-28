@@ -3,6 +3,7 @@ package domain.publicaciones;
 import domain.productos.AreaDePersonalizacion;
 import domain.productos.Producto;
 import domain.usuario.GestorDeUsuarios;
+import domain.usuario.Scanner;
 import domain.usuario.Vendedor;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,11 +24,16 @@ public class Publicacion {
     private Producto productoBase;
     private GestorDeUsuarios autenticador;
     private EstadoDePublicacion estadoDePublicacion;
+    @Setter
+    int precioPersonalizacion;
+    @Setter
+    String nombreNuevoPersonalizacion;
+
     private List<MedioDePago> mediosDePago;
     private List<String> frasesDePersonalizacion;
     private List<Imagen> imagenesDePersonalizacion;
-    private List<AreaDePersonalizacion> areasDePersonalizacion;
-    private List<PreciosPorArea> preciosDePersonalizacion;
+
+    private List<PreciosPorArea> preciosPorPersonalizacion;
     // TODO: 28/9/2022 Esto hay que arreglarlo.
     //  1- por cada area de personalizacion predefinida
     //  2- los vendedores le ponen un nombre
@@ -37,10 +43,11 @@ public class Publicacion {
     //  6-modificar comprador
 
     public Publicacion(GestorDeUsuarios autenticador, Vendedor user) {
-        this.areasDePersonalizacion = new ArrayList<>();
         this.frasesDePersonalizacion = new ArrayList<>();
         this.imagenesDePersonalizacion = new ArrayList<>();
         this.mediosDePago = new ArrayList<>();
+        this.preciosPorPersonalizacion = new ArrayList<>();
+
         this.autenticador = autenticador;
         this.user = user.getId();
         user.cargarPublicacion(this);
@@ -53,13 +60,26 @@ public class Publicacion {
     //o pongo como condicion que exista producto Base asi no crashea
 
     // TODO: 27/9/2022 publicacion es composicion con producto, acomodar para que conozca al producto base
-    public void setPrecio(int aumento) {
+    public void setNuevoPrecioPorArea(PreciosPorArea precioPorArea, int precio, String nombreNuevo, AreaDePersonalizacion area){
+        precioPorArea.setNombre(nombreNuevo);
+        precioPorArea.setAreaDePersonalizacion(area);
+        precioPorArea.setPrecio(precio);
+    }
+    public void agregarAreasDePersonalizacion() {
         if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
-            //POR CADA AREA DISPONIBLE
-            //CREAR UN NUEVO PRECIO POR AREA
-            //CARGAR EL AREA AL PRECIO POR AREA
-            //CARGAR EL PRECIO DE ESE AREA AL PRECIO POR AREA
+            //POR CADA AREA DISPONIBLE EN EL PRODUCTO_BASE
+            productoBase.getAreasBase().forEach(a-> {
+                //SE INSTANCIA UN NUEVO PRECIO_DEL_AREA
+                PreciosPorArea nuevoPrecioPorArea = new PreciosPorArea();
+                this.setPrecioPersonalizacion(precioPersonalizacion);
+                this.setNombreNuevoPersonalizacion(nombreNuevoPersonalizacion);
+                setNuevoPrecioPorArea(nuevoPrecioPorArea, precioPersonalizacion, nombreNuevoPersonalizacion,a);
+            //SE LO AGREGA A LA COLECCION DE PRECIOS_POR_PERSONALIZACION
+                preciosPorPersonalizacion.add(nuevoPrecioPorArea);
+            });
         }
+
+
         //EN EL CARRITO TENDRIAN QUE SUMAR EL PRECIO BASE
         // A LOS DISTINTOS PRECIOS DE LAS PERSONALZIACIONES SELECCIONADAS
     }
@@ -87,22 +107,6 @@ public class Publicacion {
         }
     }
 
-    public void agregarAreasDePersonalizacion(AreaDePersonalizacion areaNueva) {
-        if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
-            for (AreaDePersonalizacion area : productoBase.getAreasBase()) {
-                if (area.equals(areaNueva)) {
-                    areasDePersonalizacion.add(areaNueva);
-                }
-            }
-        }
-    }
-
-    public void printAreasDePersonalizacion() {
-        this.areasDePersonalizacion.forEach(a -> {
-            System.out.println(a.getNombre());
-        });
-    }
-
     public void printFrasesDePersonalizacion() {
         this.imagenesDePersonalizacion.forEach(i -> {
             System.out.println(i);
@@ -120,7 +124,7 @@ public class Publicacion {
         System.out.println(this.productoBase.getDescripcion());
         System.out.println(this.productoBase.getTiempoDeFabricacion() + "dias");
 
-        System.out.println(this.getPrecio() + "pesos");
+        System.out.println(this.getPrecioPersonalizacion() + "pesos");
         this.printAreasDePersonalizacion();
         this.printFrasesDePersonalizacion();
         this.printImagenesDePersonalizacion();
