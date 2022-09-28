@@ -1,8 +1,7 @@
 package domain.usuario;
 
-import domain.EstadoCarrito;
+import domain.Carrito.PagoCarrito;
 import domain.ServicioExterno;
-import domain.productos.Producto;
 import domain.publicaciones.MedioDePago;
 import domain.publicaciones.Publicacion;
 
@@ -24,7 +23,7 @@ public class Vendedor extends Usuario{
     public void aceptarPago(MedioDePago medioDePago, int monto, Comprador comprador) {
         ServicioExterno.emitirFactura(medioDePago, monto, comprador.getId(), this.getId());
         //solo le envia el mensaje al comprador si se logra pagar el carrito, ver la excepcion
-        comprador.setEstadoCarrito(EstadoCarrito.PAGADO);
+        comprador.setEstadoCarrito(PagoCarrito.PAGADO);
     }
 }
 

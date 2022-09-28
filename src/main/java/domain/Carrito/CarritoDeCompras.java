@@ -1,6 +1,5 @@
-package domain;
+package domain.Carrito;
 
-import domain.publicaciones.Publicacion;
 import domain.usuario.Comprador;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,28 +13,30 @@ public class CarritoDeCompras {
     private int idCarrito;
     private int monto;
     private Comprador admin;
-    private EstadoCarrito estadoCarrito;
-    private List<Publicacion> publicacionesCarrito;
+    private PagoCarrito pagoCarrito;
+    private List<PublicacionCustomizada> publicacionesCarrito;
 
     public CarritoDeCompras(Comprador comprador){
         this.admin= comprador;
         this.idCarrito = (int)Math.random()+(int)Math.random()*10+(int)Math.random()*100+(int)Math.random()*1000;
         this.publicacionesCarrito=new ArrayList<>();
         this.monto= 0;
-        this.estadoCarrito = EstadoCarrito.VACIO;
+        this.pagoCarrito = PagoCarrito.VACIO;
         comprador.abrirNuevoCarrito(this);
         //cual es el parametro que le paso al comprador cuando creo un nuevo carrito asi le figura
         // en su lista de carritos?
     }
     public void setMonto(int monto) {
-        publicacionesCarrito.forEach(publicacion -> this.monto= monto+ publicacion.getPrecioPersonalizacion());
+        publicacionesCarrito.forEach(publicacion -> {
+                this.monto= monto+ publicacion.getPecioPersonalizacion();
+        });
     }
-    public void setEstado(EstadoCarrito estado){
-        this.estadoCarrito = estado;
+    public void setEstado(PagoCarrito estado){
+        this.pagoCarrito = estado;
     }
-    public void agregarPublicacionACarrito(Publicacion publicacionNueva){
+    public void agregarPublicacionACarrito(PublicacionCustomizada publicacionNueva){
         publicacionesCarrito.add(publicacionNueva);
-        this.setEstado(EstadoCarrito.SIN_PAGAR);
+        this.setEstado(PagoCarrito.SIN_PAGAR);
     }
 
     // TODO: 16/9/2022  hacer una excepcion respecto al servicio externo del que te hace la factura.

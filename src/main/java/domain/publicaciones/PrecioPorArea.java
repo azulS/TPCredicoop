@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PreciosPorArea {
+public class PrecioPorArea {
     private String nombre;
     private AreaDePersonalizacion areaDePersonalizacion;
     private int precio;

@@ -1,13 +1,13 @@
 package domain.usuario;
 
-import domain.CarritoDeCompras;
-import domain.EstadoCarrito;
+import domain.Carrito.CarritoDeCompras;
+import domain.Carrito.PagoCarrito;
 import domain.publicaciones.MedioDePago;
 
 
 public class Comprador extends Usuario {
     private CarritoDeCompras carritoDeCompras;
-    private EstadoCarrito pagoCarrito = EstadoCarrito.VACIO;
+    private PagoCarrito pagoCarrito = PagoCarrito.VACIO;
 
     public Comprador(String id, TipoDeUsuario tipoDeUsuario, GestorDeUsuarios autenticado) {
         super(id, tipoDeUsuario, autenticado);
@@ -15,13 +15,13 @@ public class Comprador extends Usuario {
 
     public void abrirNuevoCarrito(CarritoDeCompras carritoDeCompras) {
         this.carritoDeCompras = carritoDeCompras;
-        this.pagoCarrito = carritoDeCompras.getEstadoCarrito();
+        this.pagoCarrito = carritoDeCompras.getPagoCarrito();
     }
     // TODO: 27/9/2022 como abro un carrito de compras?
 
-    public void setEstadoCarrito(EstadoCarrito estadoCarrito){
-        this.pagoCarrito= estadoCarrito;
-        carritoDeCompras.setEstado(estadoCarrito);
+    public void setEstadoCarrito(PagoCarrito pagoCarrito){
+        this.pagoCarrito= pagoCarrito;
+        carritoDeCompras.setEstado(pagoCarrito);
         //Solo lo puede hacer el vendedor
     }
 

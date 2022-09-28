@@ -32,7 +32,7 @@ public class Publicacion {
     private List<String> frasesDePersonalizacion;
     private List<Imagen> imagenesDePersonalizacion;
 
-    private List<PreciosPorArea> preciosPorPersonalizacion;
+    private List<PrecioPorArea> preciosPorPersonalizacion;
     // TODO: 28/9/2022 Esto hay que arreglarlo.
     //  1- por cada area de personalizacion predefinida
     //  2- los vendedores le ponen un nombre
@@ -59,7 +59,7 @@ public class Publicacion {
     //o pongo como condicion que exista producto Base asi no crashea
 
     // TODO: 27/9/2022 publicacion es composicion con producto, acomodar para que conozca al producto base
-    public void setNuevoPrecioPorArea(PreciosPorArea precioPorArea, int precio, String nombreNuevo, AreaDePersonalizacion area){
+    public void setNuevoPrecioPorArea(PrecioPorArea precioPorArea, int precio, String nombreNuevo, AreaDePersonalizacion area){
         precioPorArea.setNombre(nombreNuevo);
         precioPorArea.setAreaDePersonalizacion(area);
         precioPorArea.setPrecio(precio);
@@ -67,17 +67,19 @@ public class Publicacion {
     public void agregarAreasDePersonalizacion() {
         if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
              productoBase.getAreasBase().forEach(a-> {
-                PreciosPorArea nuevoPrecioPorArea = new PreciosPorArea();
+                PrecioPorArea nuevoPrecioPorArea = new PrecioPorArea();
                 this.setPrecioPersonalizacion(precioPersonalizacion);
                 this.setNombreNuevoPersonalizacion(nombreNuevoPersonalizacion);
                 setNuevoPrecioPorArea(nuevoPrecioPorArea, precioPersonalizacion, nombreNuevoPersonalizacion,a);
                 preciosPorPersonalizacion.add(nuevoPrecioPorArea);
             });
         }
-
-
         //EN EL CARRITO TENDRIAN QUE SUMAR EL PRECIO BASE
         // A LOS DISTINTOS PRECIOS DE LAS PERSONALZIACIONES SELECCIONADAS
+    }
+
+    public int getPrecioPersonalizacion(PrecioPorArea areaSeleccionada){
+        return areaSeleccionada.getPrecio();
     }
 
     public void agregarMedioDePago(MedioDePago medioDePagoNuevo) {

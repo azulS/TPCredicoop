@@ -1,7 +1,7 @@
 package domain.usuario;
 
-import domain.CarritoDeCompras;
-import domain.EstadoCarrito;
+import domain.Carrito.CarritoDeCompras;
+import domain.Carrito.PagoCarrito;
 import domain.publicaciones.MedioDePago;
 import domain.ServicioExterno;
 import lombok.Getter;
@@ -35,7 +35,7 @@ public abstract class Usuario  {
     public void aceptarPago(MedioDePago medioDePago, CarritoDeCompras pedido, int monto, Usuario usuario){
         if (pedido.getMonto() == monto) {
             ServicioExterno.emitirFactura(medioDePago, monto, usuario.getId(), this.id);
-            pedido.setEstado(EstadoCarrito.PAGADO);
+            pedido.setEstado(PagoCarrito.PAGADO);
         }
     }
 
