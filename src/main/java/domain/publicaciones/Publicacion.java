@@ -22,12 +22,12 @@ public class Publicacion {
     //  Ver como se setea vendedor
     private Producto productoBase;
     private GestorDeUsuarios autenticador;
-    private int precio;
     private EstadoDePublicacion estadoDePublicacion;
     private List<MedioDePago> mediosDePago;
     private List<String> frasesDePersonalizacion;
     private List<Imagen> imagenesDePersonalizacion;
     private List<AreaDePersonalizacion> areasDePersonalizacion;
+    private List<PreciosPorArea> preciosDePersonalizacion;
     // TODO: 28/9/2022 Esto hay que arreglarlo.
     //  1- por cada area de personalizacion predefinida
     //  2- los vendedores le ponen un nombre
@@ -55,8 +55,13 @@ public class Publicacion {
     // TODO: 27/9/2022 publicacion es composicion con producto, acomodar para que conozca al producto base
     public void setPrecio(int aumento) {
         if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
-            this.precio = this.productoBase.getPrecioBase() + aumento;
+            //POR CADA AREA DISPONIBLE
+            //CREAR UN NUEVO PRECIO POR AREA
+            //CARGAR EL AREA AL PRECIO POR AREA
+            //CARGAR EL PRECIO DE ESE AREA AL PRECIO POR AREA
         }
+        //EN EL CARRITO TENDRIAN QUE SUMAR EL PRECIO BASE
+        // A LOS DISTINTOS PRECIOS DE LAS PERSONALZIACIONES SELECCIONADAS
     }
 
     public void agregarMedioDePago(MedioDePago medioDePagoNuevo) {
