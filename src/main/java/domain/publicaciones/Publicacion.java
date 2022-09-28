@@ -29,12 +29,16 @@ public class Publicacion {
     private List<Imagen> imagenesDePersonalizacion;
     private List<AreaDePersonalizacion> areasDePersonalizacion;
 
-    public Publicacion() {
+    public Publicacion(GestorDeUsuarios autenticador, Vendedor user) {
         this.areasDePersonalizacion = new ArrayList<>();
         this.frasesDePersonalizacion = new ArrayList<>();
         this.imagenesDePersonalizacion = new ArrayList<>();
         this.mediosDePago = new ArrayList<>();
         this.autenticador = autenticador;
+        this.user = user.getId();
+        user.cargarPublicacion(this);
+        //que parametro le pongo a "cargarPublicacion" para que el vendedor cargue a su coleccion de publicaciones
+        // esta publicacion nueva?
     }
 
     // TODO: 27/9/2022 como hacer para oblicar a intanciar el producto Base cuando creo una publicacion:

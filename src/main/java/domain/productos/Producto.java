@@ -1,5 +1,6 @@
 package domain.productos;
 
+import domain.usuario.Gestor;
 import domain.usuario.GestorDeUsuarios;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,10 +21,14 @@ public class Producto {
     private List<AreaDePersonalizacion> areasBase;
     private List<TipoDePersonalizacion> tiposDePersonalizacion;
 
-    public Producto(GestorDeUsuarios autenticador){
+    public Producto(GestorDeUsuarios autenticador, Gestor usuario){
         this.autenticador = autenticador;
         this.areasBase= new ArrayList<>();
         this.tiposDePersonalizacion = new ArrayList<>();
+        this.user= usuario.getId();
+        usuario.cargarProducto(this);
+        //que parametro le pongo a "cargarProducto" para que el Gestor cargue a su coleccion de productos
+        // este producto nuevo?
     }
 
     public void agregarAreaDePersonalizacion(AreaDePersonalizacion nuevaAreaDisponible){

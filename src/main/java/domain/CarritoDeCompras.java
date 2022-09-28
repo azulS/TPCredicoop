@@ -3,12 +3,14 @@ package domain;
 import domain.publicaciones.Publicacion;
 import domain.usuario.Comprador;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 public class CarritoDeCompras {
+    @Setter
     private int idCarrito;
     private int monto;
     private Comprador admin;
@@ -21,7 +23,9 @@ public class CarritoDeCompras {
         this.publicacionesCarrito=new ArrayList<>();
         this.monto= 0;
         this.estadoCarrito = EstadoCarrito.VACIO;
-        comprador.setIdCarritoDeCompras(this.idCarrito);
+        comprador.abrirNuevoCarrito(this);
+        //cual es el parametro que le paso al comprador cuando creo un nuevo carrito asi le figura
+        // en su lista de carritos?
     }
     public void setMonto(int monto) {
         publicacionesCarrito.forEach(publicacion -> this.monto= monto+ publicacion.getPrecio());
@@ -29,8 +33,8 @@ public class CarritoDeCompras {
     public void setEstado(EstadoCarrito estado){
         this.estadoCarrito = estado;
     }
-    public void agregarProductoACarrito(Publicacion productoNuevo){
-        publicacionesCarrito.add(productoNuevo);
+    public void agregarPublicacionACarrito(Publicacion publicacionNueva){
+        publicacionesCarrito.add(publicacionNueva);
         this.setEstado(EstadoCarrito.SIN_PAGAR);
     }
 

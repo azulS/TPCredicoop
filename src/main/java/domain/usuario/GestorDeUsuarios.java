@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 public class GestorDeUsuarios {
     private List <Usuario> listaDeUsuarios;
+
     public GestorDeUsuarios(){
         this.listaDeUsuarios=new ArrayList<>();
     }

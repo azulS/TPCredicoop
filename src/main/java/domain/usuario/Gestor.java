@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Gestor extends Usuario {
     private List<Producto> productosCargados;
-    public Gestor(String id, String password, TipoDeUsuario tipoDeUsuario){
-        super(id, password, tipoDeUsuario);
+    public Gestor(GestorDeUsuarios autenticador, String id, String password, TipoDeUsuario tipoDeUsuario){
+        super (id, password, tipoDeUsuario, autenticador);
         this.productosCargados= new ArrayList<>();
     }
     public void cargarProducto (Producto productoNuevo){
