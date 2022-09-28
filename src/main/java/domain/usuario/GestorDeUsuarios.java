@@ -1,7 +1,5 @@
 package domain.usuario;
 
-import domain.usuario.TipoDeUsuario;
-import domain.usuario.Usuario;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,9 +8,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class AutenticadorDeUsuario {
+public class GestorDeUsuarios {
     private List <Usuario> listaDeUsuarios;
-    public AutenticadorDeUsuario(){
+    public GestorDeUsuarios(){
         this.listaDeUsuarios=new ArrayList<>();
     }
     public void agregarNuevoUsuario(Usuario usuarioNuevo){

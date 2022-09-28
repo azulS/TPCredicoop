@@ -1,6 +1,7 @@
 package domain;
 
-import domain.productos.Publicacion;
+import domain.publicaciones.Publicacion;
+import domain.usuario.Comprador;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -8,30 +9,38 @@ import java.util.List;
 
 @Getter
 public class CarritoDeCompras {
+    private int idCarrito;
     private int monto;
+    private Comprador admin;
+    private EstadoCarrito estadoCarrito;
     private List<Publicacion> publicacionesCarrito;
 
-    public CarritoDeCompras(){
+    public CarritoDeCompras(Comprador comprador){
+        this.admin= comprador;
+        this.idCarrito = (int)Math.random()+(int)Math.random()*10+(int)Math.random()*100+(int)Math.random()*1000;
         this.publicacionesCarrito=new ArrayList<>();
+        this.monto= 0;
+        this.estadoCarrito = EstadoCarrito.VACIO;
+        comprador.setIdCarritoDeCompras(this.idCarrito);
     }
     public void setMonto(int monto) {
         publicacionesCarrito.forEach(publicacion -> this.monto= monto+ publicacion.getPrecio());
     }
+    public void setEstado(EstadoCarrito estado){
+        this.estadoCarrito = estado;
+    }
     public void agregarProductoACarrito(Publicacion productoNuevo){
         publicacionesCarrito.add(productoNuevo);
+        this.setEstado(EstadoCarrito.SIN_PAGAR);
     }
-    public void setMonto() {
-        publicacionesCarrito.forEach(p->{
-            this.monto= p.getPrecio() + this.monto;
-        })
-    }
-
-
 
     // TODO: 16/9/2022  hacer una excepcion respecto al servicio externo del que te hace la factura.
     //  lo mismo una excepcion por si no me aceptan el pago (dos try...catch)
+    //cuando agrego una publicacion al carrito de compras tambien le asigno un producto al Id Carrito de Comprador
+    //cuando agrego una publicaion al carrito de compras le cambio el estado Carrito a comprador
 
     // TODO: 16/9/2022 hacer excepcion try...catch
     //  por si el comprador quiere pagar el carrito y alguna de las publicaciones estan canceladas
-    // TODO: 19/9/2022 como se relaciona con las publicaciones o los productos y los compradores? 
+    // TODO: 19/9/2022 como se relaciona con las publicaciones o los productos y los compradores?
+    //para crear el Id del carrito se utiliza un numero random que no este en la base de datos de carritos existentes
 }

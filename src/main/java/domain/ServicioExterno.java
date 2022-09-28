@@ -1,7 +1,9 @@
 package domain;
 
+import domain.publicaciones.MedioDePago;
+
 public class ServicioExterno {
-    public void emitirFactura(MedioDePago medioDePago, int monto, String comprador, String vendedor){
+    public static void emitirFactura(MedioDePago medioDePago, int monto, String comprador, String vendedor){
 
     }
 }

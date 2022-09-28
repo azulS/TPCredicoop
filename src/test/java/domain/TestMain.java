@@ -1,7 +1,9 @@
 package domain;
 
+import domain.productos.AreaDePersonalizacion;
 import domain.productos.Producto;
-import domain.usuario.AutenticadorDeUsuario;
+import domain.productos.TipoDePersonalizacion;
+import domain.usuario.GestorDeUsuarios;
 import domain.usuario.Gestor;
 import domain.usuario.TipoDeUsuario;
 import domain.usuario.Usuario;
@@ -9,8 +11,8 @@ import domain.usuario.Usuario;
 public class TestMain {
     public static void main(String[] args) {
 
-        Usuario uno = new Gestor();
-        AutenticadorDeUsuario autenticador = new AutenticadorDeUsuario();
+        Usuario uno = new Gestor("Carlos", "125adsfas",  TipoDeUsuario.GESTOR);
+        GestorDeUsuarios autenticador = new GestorDeUsuarios();
         autenticador.agregarNuevoUsuario(uno);
         uno.setId("Luciano");
         uno.setTipoDeUsuario(TipoDeUsuario.GESTOR);
@@ -21,7 +23,7 @@ public class TestMain {
         Producto zapatillas = new Producto(autenticador);
         Producto otros = new Producto(autenticador);
 
-        remera.setAdmin("Luciano");
+        remera.setUser("Luciano");
 
 
         remera.setNombre("Remera");

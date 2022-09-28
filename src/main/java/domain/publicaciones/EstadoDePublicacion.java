@@ -1,4 +1,4 @@
-package domain;
+package domain.publicaciones;
 
 public enum EstadoDePublicacion {
     PAUSADO,
