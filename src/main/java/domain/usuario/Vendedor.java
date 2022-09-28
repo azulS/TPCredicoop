@@ -1,5 +1,6 @@
 package domain.usuario;
 
+import domain.EstadoCarrito;
 import domain.ServicioExterno;
 import domain.productos.Producto;
 import domain.publicaciones.MedioDePago;
@@ -20,12 +21,12 @@ public class Vendedor extends Usuario{
         publicacionesCargadas.add(publicacionNueva);
     }
 
-    public void aceptarPago(MedioDePago medioDePago, int monto, String comprador){
-        ServicioExterno.emitirFactura(medioDePago, monto, comprador, this.getId());
-        }
-        //le envia un mensaje a COmprador para que cambie el estado de su carrito
+    public void aceptarPago(MedioDePago medioDePago, int monto, Comprador comprador) {
+        ServicioExterno.emitirFactura(medioDePago, monto, comprador.getId(), this.getId());
+        //solo le envia el mensaje al comprador si se logra pagar el carrito, ver la excepcion
+        comprador.setEstadoCarrito(EstadoCarrito.PAGADO);
     }
-
+}
 
     //hacer que la manera de conseguir el tipo de usuario no sea a traves de un atributo
     //sino a traves de un metodo en cada tipo de usuario

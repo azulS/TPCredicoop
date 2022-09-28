@@ -17,7 +17,13 @@ public class Comprador extends Usuario {
         this.carritoDeCompras = carritoDeCompras;
         this.pagoCarrito = carritoDeCompras.getEstadoCarrito();
     }
-    // TODO: 27/9/2022 como abro un carrito de compras? 
+    // TODO: 27/9/2022 como abro un carrito de compras?
+
+    public void setEstadoCarrito(EstadoCarrito estadoCarrito){
+        this.pagoCarrito= estadoCarrito;
+        carritoDeCompras.setEstado(estadoCarrito);
+        //Solo lo puede hacer el vendedor
+    }
 
     //por cada publicacion del carrito:
     //1-mostrar medios de pago disponibles
@@ -28,7 +34,7 @@ public class Comprador extends Usuario {
             p.printMediosDePago();
             for (MedioDePago m : p.getMediosDePago()) {
                 if (m.equals(medioDePago)) {
-                    p.getVendedor().aceptarPago(medioDePago, carritoDeCompras.getMonto(), this.getId());
+                    p.getVendedor().aceptarPago(medioDePago, carritoDeCompras.getMonto(), this);
                 }
             }
         });
