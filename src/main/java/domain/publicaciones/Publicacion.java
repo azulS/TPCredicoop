@@ -28,6 +28,13 @@ public class Publicacion {
     private List<String> frasesDePersonalizacion;
     private List<Imagen> imagenesDePersonalizacion;
     private List<AreaDePersonalizacion> areasDePersonalizacion;
+    // TODO: 28/9/2022 Esto hay que arreglarlo.
+    //  1- por cada area de personalizacion predefinida
+    //  2- los vendedores le ponen un nombre
+    //  3- los vendedores le ponen un precio
+    //  4- calcular el precio del carrito en funcion de las personalizaciones elegidas
+    //  5-modificar Carrito
+    //  6-modificar comprador
 
     public Publicacion(GestorDeUsuarios autenticador, Vendedor user) {
         this.areasDePersonalizacion = new ArrayList<>();
