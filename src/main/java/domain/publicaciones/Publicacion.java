@@ -12,28 +12,25 @@ import java.util.List;
 
 @Getter
 public class Publicacion {
+    private GestorDeUsuarios autenticador;
+    @Setter
+    int precioPersonalizacion;
+    @Setter
+    String nombreNuevoPersonalizacion;
+    // TODO: 29/9/2022  habria que intentar borrar lo que esta arriba 
+    
     @Setter
     private String idPublicacion;
     @Setter
     private Vendedor vendedor;
     private Producto productoBase;
-    private GestorDeUsuarios autenticador;
     private EstadoDePublicacion estadoDePublicacion;
-    @Setter
-    int precioPersonalizacion;
-    @Setter
-    String nombreNuevoPersonalizacion;
     private List<MedioDePago> mediosDePago;
-    private List<String> frasesDePersonalizacion;
-    private List<Imagen> imagenesDePersonalizacion;
-    private List<PrecioPorArea> preciosPorPersonalizacion;
+    private PersonalizacionPublicacion personalizacion;
 
     public Publicacion(GestorDeUsuarios autenticador, Vendedor user) {
-        this.frasesDePersonalizacion = new ArrayList<>();
-        this.imagenesDePersonalizacion = new ArrayList<>();
-        this.mediosDePago = new ArrayList<>();
-        this.preciosPorPersonalizacion = new ArrayList<>();
 
+        this.mediosDePago = new ArrayList<>();
         this.autenticador = autenticador;
         this.vendedor= user;
         user.cargarPublicacion(this);
@@ -58,7 +55,7 @@ public class Publicacion {
                 this.setPrecioPersonalizacion(precioPersonalizacion);
                 this.setNombreNuevoPersonalizacion(nombreNuevoPersonalizacion);
                 setNuevoPrecioPorArea(nuevoPrecioPorArea, precioPersonalizacion, nombreNuevoPersonalizacion,a);
-                preciosPorPersonalizacion.add(nuevoPrecioPorArea);
+                personalizacion.getPreciosPorPersonalizacion().add(nuevoPrecioPorArea);
             });
         }
         //EN EL CARRITO TENDRIAN QUE SUMAR EL PRECIO BASE
@@ -82,24 +79,24 @@ public class Publicacion {
 
     public void agregarFrases(String fraseNueva) {
         if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
-            frasesDePersonalizacion.add(fraseNueva);
+            personalizacion.getFrasesDePersonalizacion().add(fraseNueva);
         }
     }
 
     public void agregarImagenes(Imagen imagenNueva) {
         if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
-            imagenesDePersonalizacion.add(imagenNueva);
+            personalizacion.getImagenesDePersonalizacion().add(imagenNueva);
         }
     }
 
     public void printFrasesDePersonalizacion() {
-        this.imagenesDePersonalizacion.forEach(i -> {
+        this.personalizacion.getImagenesDePersonalizacion().forEach(i -> {
             System.out.println(i);
         });
     }
 
     public void printImagenesDePersonalizacion() {
-        this.frasesDePersonalizacion.forEach(f -> {
+        this.personalizacion.getFrasesDePersonalizacion().forEach(f -> {
             System.out.println(f);
         });
     }
