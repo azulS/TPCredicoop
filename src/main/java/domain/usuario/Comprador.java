@@ -31,10 +31,10 @@ public class Comprador extends Usuario {
     // 3- enviarle el medio de pago al vendedor
     public void pagarCarrito(MedioDePago medioDePago) {
         carritoDeCompras.getPublicacionesCarrito().forEach(p -> {
-            p.printMediosDePago();
-            for (MedioDePago m : p.getMediosDePago()) {
+            p.getPublicacion().printMediosDePago();
+            for (MedioDePago m : p.getPublicacion().getMediosDePago()) {
                 if (m.equals(medioDePago)) {
-                    p.getVendedor().aceptarPago(medioDePago, carritoDeCompras.getMonto(), this);
+                    p.getPublicacion().getVendedor().aceptarPago(medioDePago, carritoDeCompras.getMonto(), this);
                 }
             }
         });

@@ -15,11 +15,7 @@ public class Publicacion {
     @Setter
     private String idPublicacion;
     @Setter
-    private String user;
-    @Setter
     private Vendedor vendedor;
-    // TODO: 27/9/2022 arreglar lo de user y sacar esta info del atributo Uruario Vendedor.
-    //  Ver como se setea vendedor
     private Producto productoBase;
     private GestorDeUsuarios autenticador;
     private EstadoDePublicacion estadoDePublicacion;
@@ -27,19 +23,10 @@ public class Publicacion {
     int precioPersonalizacion;
     @Setter
     String nombreNuevoPersonalizacion;
-
     private List<MedioDePago> mediosDePago;
     private List<String> frasesDePersonalizacion;
     private List<Imagen> imagenesDePersonalizacion;
-
     private List<PrecioPorArea> preciosPorPersonalizacion;
-    // TODO: 28/9/2022 Esto hay que arreglarlo.
-    //  1- por cada area de personalizacion predefinida
-    //  2- los vendedores le ponen un nombre
-    //  3- los vendedores le ponen un precio
-    //  4- calcular el precio del carrito en funcion de las personalizaciones elegidas
-    //  5-modificar Carrito
-    //  6-modificar comprador
 
     public Publicacion(GestorDeUsuarios autenticador, Vendedor user) {
         this.frasesDePersonalizacion = new ArrayList<>();
@@ -48,7 +35,7 @@ public class Publicacion {
         this.preciosPorPersonalizacion = new ArrayList<>();
 
         this.autenticador = autenticador;
-        this.user = user.getId();
+        this.vendedor= user;
         user.cargarPublicacion(this);
         //que parametro le pongo a "cargarPublicacion" para que el vendedor cargue a su coleccion de publicaciones
         // esta publicacion nueva?
