@@ -1,39 +1,32 @@
 package domain.models.entities.productos;
 
+import domain.Persistente;
 import domain.models.entities.usuario.GestorDeUsuarios;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name="TipoDePersonalizacion")
-//@Getter
-public class TipoDePersonalizacion {
-//
-//    @ManyToOne
-//    @JoinColumn(name = "TipoDePersonalizacion_id", referencedColumnName ="Id")
-    private Producto producto;
+@Entity
+@Table(name="TipoDePersonalizacion")
+@Getter
+@Setter
+public class TipoDePersonalizacion extends Persistente {
 
-//    @Column
-    private GestorDeUsuarios autenticador;
-//    @Column
+    @Column
     public String nombre;
-//    @Column
+    @Column
     public String descripcion;
 
-    public TipoDePersonalizacion(GestorDeUsuarios autenticador){
-        this.autenticador = autenticador;
-    }
-
-    public void setNombre(String nombre, String user) {
-        if (autenticador.esGestor(user)) {
-            this.nombre = nombre;
-        }
-    }
-    public void setDescription(String nombre, String user) {
-        if (autenticador.esGestor(user)) {
-            this.nombre = nombre;
-        }
-    }
+//    public void setNombre(String nombre, String user) {
+//        if (autenticador.esGestor(user)) {
+//            this.nombre = nombre;
+//        }
+//    }
+//    public void setDescription(String nombre, String user) {
+//        if (autenticador.esGestor(user)) {
+//            this.nombre = nombre;
+//        }
+//    }
 
 }

@@ -15,11 +15,12 @@ import java.util.List;
 @Getter
 @Setter
 public class EstadoCarrito extends Persistente {
-    @OneToOne
-    private MedioDePago formaDePago;
+    @ManyToOne
+    @JoinColumn (name = "estadoCarrito_id", referencedColumnName= "id")
+    private CarritoDeCompras carrito;
 
     @OneToOne
-    private CarritoDeCompras carrito;
+    private MedioDePago formaDePago;
 
     @OneToMany
     private List<EstadoCompra> estado;

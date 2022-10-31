@@ -1,5 +1,7 @@
 package domain.models.entities.publicaciones;
 
+import domain.Persistente;
+import domain.models.entities.productos.Producto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,26 +10,22 @@ import java.util.List;
 
 import javax.persistence.*;
 
-//@Entity
-//@Getter
-//@Setter
-public class PersonalizacionPublicacion {
+@Entity
+@Getter
+@Setter
+@Table
+public class PersonalizacionPublicacion extends Persistente {
 
-//    @ManyToOne
-//    @JoinColumn(name="publicacion_id", referencedColumnName="id")
-    private Publicacion publicacion;
-//    @ElementCollection
-//    @CollectionTable(name="PersonalizacionPublicacion_frasesDePersonlizacion",
-//            joinColumns=@JoinColumn(name="PersonalizacionPublicacion_Id"))
-    private List<String> frasesDePersonalizacion;
-//    @OneToMany
-    private List<Imagen> imagenesDePersonalizacion;
-//    @OneToMany
-    private List<PrecioPorArea> preciosPorPersonalizacion;
+    @Column
+    private String nombre;
+    @ManyToOne
+    private Producto productoBase;
+    @OneToMany
+    private List<Personalizacion> personalizaciones;
+    @Column
+    private int precio;
 
     public PersonalizacionPublicacion(){
-        this.frasesDePersonalizacion =new ArrayList<>();
-        this.imagenesDePersonalizacion =new ArrayList<>();
-        this.preciosPorPersonalizacion =new ArrayList<>();
+        this.personalizaciones =new ArrayList<>();
     }
 }

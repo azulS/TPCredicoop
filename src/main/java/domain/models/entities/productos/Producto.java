@@ -17,38 +17,23 @@ import javax.persistence.*;
 @Setter
 public class Producto extends Persistente {
 
-//    @ManyToOne
-//    @JoinColumn(name="gestor_id", referencedColumnName="id")
-//    private Gestor gestor;
-
     @Column
     private String nombre;
-    @Column
-    private int precioBase;
+    @ManyToOne
+    @JoinColumn(name="gestor_id", referencedColumnName="id")
+    private Gestor user;
     @Column
     private String descripcion;
     @Column
-    private String user;
+    private int precioBase;
     @Column
     private int tiempoDeFabricacion;
-//    @Column
-//    private GestorDeUsuarios autenticador;
+    @OneToMany
+    private List<PosiblePersonalizacion> posiblesPersonalizaciones;
 
-//    @OneToMany
-//    private List<AreaDePersonalizacion> areasBase;
-
-//    @OneToMany
-//    private List<TipoDePersonalizacion> tiposDePersonalizacion;
-
-//    public Producto(GestorDeUsuarios autenticador, Gestor usuario){
-//        this.autenticador = autenticador;
-//        this.areasBase= new ArrayList<>();
-//        this.tiposDePersonalizacion = new ArrayList<>();
-  //      this.user= usuario.getId();
-//        usuario.cargarProducto(this);
-//        //que parametro le pongo a "cargarProducto" para que el Gestor cargue a su coleccion de productos
-//        // este producto nuevo?
-//    }
+public Producto(){
+    this.posiblesPersonalizaciones= new ArrayList<>();
+}
 
 //    public void agregarAreaDePersonalizacion(AreaDePersonalizacion nuevaAreaDisponible){
 ////        if (autenticador.esGestor(user)) {

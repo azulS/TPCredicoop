@@ -1,5 +1,6 @@
 package domain.models.entities.usuario;
 
+import domain.Persistente;
 import domain.models.entities.Carrito.CarritoDeCompras;
 import domain.models.entities.Carrito.EstadoCarrito;
 import domain.models.entities.publicaciones.MedioDePago;
@@ -11,25 +12,19 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.persistence.Entity;
 
-//@Entity
-//@Table(name="Usuario")
+@Table(name="Usuario")
 @Entity
 @Setter
 @Getter
-//@NoArgsConstructor
-public abstract class Usuario //extends Persistente
-         {
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-@Column(name = "id", nullable = false)
-private Long id;
-//    @OneToOne
-//    @Column
-@Column
- private String password;
-//    @Setter
-//    @Enumerated(EnumType.STRING)
-//    private TipoDeUsuario tipoDeUsuario;
+public abstract class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @Column
+     private String password;
+    @Enumerated(EnumType.STRING)
+    private TipoDeUsuario tipoDeUsuario;
 
              public void setId(Long id) {
                  this.id = id;

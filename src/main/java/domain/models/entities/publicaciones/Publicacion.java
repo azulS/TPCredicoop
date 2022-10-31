@@ -17,26 +17,17 @@ import javax.persistence.*;
 @Table(name="Publicacion")
 @Getter
 @Setter
-public class Publicacion extends Persistente
-{
-//    @ManyToOne
-//    @JoinColumn(name="vendedor_id", referencedColumnName="id")
-//    private Vendedor vendedor;
-//    @Column
-//    private Producto productoBase;
-
-    @Enumerated(EnumType.STRING)
-    private EstadoDePublicacion estadoDePublicacion;
-
+public class Publicacion extends Persistente {
+    @ManyToOne
+    private Vendedor vendedor;
+    @OneToOne
+    private PersonalizacionPublicacion productoPersonalizado;
     @OneToMany
-    private List<MedioDePago> mediosDePago;
+    private List<EstadoDeLaPublicacion> estadosDePublicacion;
 
-//    private PersonalizacionPublicacion personalizacion;
     public Publicacion(GestorDeUsuarios autenticador, Vendedor user) {
-
-        this.mediosDePago = new ArrayList<>();
-//        this.vendedor= user;
-        user.cargarPublicacion(this);
+        this.estadosDePublicacion = new ArrayList<>();
+    user.cargarPublicacion(this);
         //que parametro le pongo a "cargarPublicacion" para que el vendedor cargue a su coleccion de publicaciones
         // esta publicacion nueva?
     }
@@ -66,16 +57,8 @@ public class Publicacion extends Persistente
 //        return areaSeleccionada.getPrecio();
 //    }
 
-    public void agregarMedioDePago(MedioDePago medioDePagoNuevo) {
-        this.mediosDePago.add(medioDePagoNuevo);
-    }
-
     // TODO: 27/9/2022 agregar la condicion de que si ya esta ese medio de pago no tiene que agregarlo otra vez
-    public void setEstadoDePublicacion(EstadoDePublicacion estadoDePublicacion) {
-//        if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {
-            this.estadoDePublicacion = estadoDePublicacion;
-//        }
-    }
+
 
 //    public void agregarFrases(String fraseNueva) {
 //        if (this.productoBase.getAutenticador().esVendedor(this.productoBase.getUser())) {

@@ -1,7 +1,6 @@
 package domain.models.entities.Carrito;
 
 import domain.Persistente;
-import domain.models.entities.publicaciones.PrecioPorArea;
 import domain.models.entities.publicaciones.Publicacion;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,10 +18,14 @@ public class Item extends Persistente {
     @JoinColumn(name="carrito_id", referencedColumnName = "id")
     private CarritoDeCompras carrito;
 
-//    @Column
-//    private Publicacion publicacion;
+    @OneToOne
+    private Publicacion publicacion;
+    
     @Column
     private int cantidad;
+
+    // TODO: 31/10/2022 que hago con el id del item? 
+    
 //    public Item(Publicacion publicacion, PrecioPorArea areaSeleccionada) {
 //        this.publicacion = publicacion;
 //    }
