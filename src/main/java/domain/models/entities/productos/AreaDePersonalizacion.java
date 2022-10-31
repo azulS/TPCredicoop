@@ -1,14 +1,21 @@
-package domain.productos;
+package domain.models.entities.productos;
 
-import domain.productos.TipoDePersonalizacion;
-import domain.usuario.GestorDeUsuarios;
+import domain.models.entities.usuario.GestorDeUsuarios;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
+
+//@Entity
+//@Table(name="AreaDePersonalizacion")
 public class AreaDePersonalizacion {
-    @Getter
+//    @ManyToOne
+//    @JoinColumn(name = "AreaDePersonalizacion_id", referencedColumnName ="Id")
+    private Producto producto;
+//    @Column
+//    @Getter
     private String nombre;
+
+//    @Column
     private GestorDeUsuarios autenticador;
 
     public AreaDePersonalizacion(GestorDeUsuarios autenticador){

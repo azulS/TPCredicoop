@@ -1,4 +1,4 @@
-package domain.publicaciones;
+package domain.models.entities.publicaciones;
 
 public enum EstadoDePublicacion {
     PAUSADO,

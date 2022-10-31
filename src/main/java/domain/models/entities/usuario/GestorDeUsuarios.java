@@ -1,4 +1,4 @@
-package domain.usuario;
+package domain.models.entities.usuario;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,20 +18,20 @@ public class GestorDeUsuarios {
         this.listaDeUsuarios.add(usuarioNuevo);
     }
     public boolean esGestor(String usuario){
-        for (Usuario u : listaDeUsuarios){
-            if (u.getId().equals(usuario) ){
-                return u.getTipoDeUsuario().equals(TipoDeUsuario.GESTOR);
-            }
-        }
+//        for (Usuario u : listaDeUsuarios){
+//            if (u.getId().equals(usuario) ){
+//                return u.getTipoDeUsuario().equals(TipoDeUsuario.GESTOR);
+//            }
+//        }
         return false;
         //que pasa si subieron un usuario que no existe? habria que hacer un cartel por si se rompe
     }
     public boolean esVendedor(String usuario){
-        for (Usuario u : listaDeUsuarios){
-            if (u.getId().equals(usuario) ){
-                return u.getTipoDeUsuario().equals(TipoDeUsuario.VENDEDOR);
-            }
-        }
+//        for (Usuario u : listaDeUsuarios){
+//            if (u.getId().equals(usuario) ){
+//                return u.getTipoDeUsuario().equals(TipoDeUsuario.VENDEDOR);
+//            }
+//        }
         return false;
         //que pasa si subieron un usuario que no existe? habria que hacer un cartel por si se rompe
     }

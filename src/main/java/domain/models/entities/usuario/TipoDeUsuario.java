@@ -1,4 +1,4 @@
-package domain.usuario;
+package domain.models.entities.usuario;
 
 public enum TipoDeUsuario {
     VENDEDOR,

@@ -1,15 +1,8 @@
 package domain;
 
-import domain.productos.AreaDePersonalizacion;
-import domain.productos.Producto;
-import domain.productos.TipoDePersonalizacion;
-import domain.usuario.GestorDeUsuarios;
-import domain.usuario.Gestor;
-import domain.usuario.TipoDeUsuario;
-import domain.usuario.Usuario;
 
-public class TestMain {
-    public static void main(String[] args) {
+//public class TestMain {
+//    public static void main(String[] args) {
 
 //        Usuario uno = new Gestor("Carlos", "125adsfas",  TipoDeUsuario.GESTOR);
 //        GestorDeUsuarios autenticador = new GestorDeUsuarios();
@@ -95,5 +88,3 @@ public class TestMain {
 //        return producto;
 //    }
 //}
-    }
-}
