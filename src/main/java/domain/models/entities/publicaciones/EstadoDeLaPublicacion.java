@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Table
 public class EstadoDeLaPublicacion extends Persistente {
     @ManyToOne
-    @JoinColumn (name = "estado_id", referencedColumnName= "id")
+    @JoinColumn (name = "publicacion_id", referencedColumnName= "id")
     private Publicacion publicacion;
 
     @Column

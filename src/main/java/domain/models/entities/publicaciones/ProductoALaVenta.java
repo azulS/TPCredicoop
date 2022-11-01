@@ -14,18 +14,18 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table
-public class PersonalizacionPublicacion extends Persistente {
+public class ProductoALaVenta extends Persistente {
 
     @Column
     private String nombre;
     @ManyToOne
     private Producto productoBase;
     @OneToMany
-    private List<Personalizacion> personalizaciones;
+    private List<PersonalizacionVendedores> personalizaciones;
     @Column
     private int precio;
 
-    public PersonalizacionPublicacion(){
+    public ProductoALaVenta(){
         this.personalizaciones =new ArrayList<>();
     }
 }

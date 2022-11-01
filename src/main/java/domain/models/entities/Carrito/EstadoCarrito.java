@@ -11,21 +11,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
+@Table (name = "EstadoCarrito")
 @Getter
 @Setter
 public class EstadoCarrito extends Persistente {
+
     @ManyToOne
-    @JoinColumn (name = "estadoCarrito_id", referencedColumnName= "id")
+    @JoinColumn (name = "carritoDeCompras_id", referencedColumnName= "id")
     private CarritoDeCompras carrito;
 
     @OneToOne
     private MedioDePago formaDePago;
 
     @OneToMany
-    private List<EstadoCompra> estado;
+    private List<EstadoCompra> estadoDeCompra;
 
     public EstadoCarrito(){
-        this.estado= new ArrayList<>();
+        this.estadoDeCompra= new ArrayList<>();
     }
 }

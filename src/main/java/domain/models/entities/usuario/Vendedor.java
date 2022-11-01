@@ -1,12 +1,12 @@
 package domain.models.entities.usuario;
 
-import domain.models.entities.Carrito.EstadoCarrito;
-import domain.models.entities.ServicioExterno;
 import domain.models.entities.publicaciones.MedioDePago;
 import domain.models.entities.publicaciones.Publicacion;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -15,17 +15,22 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+//@DiscriminatorValue("vendedor")
+@NoArgsConstructor
 public class Vendedor extends Usuario {
     @OneToMany
-    private List<Publicacion> publicacionesCargadas;
+    private List<Publicacion> tienda;
 
+    @OneToMany
+    private List<MedioDePago> mediosDePagoAceptados;
     public Vendedor(String id, TipoDeUsuario tipoDeUsuario, GestorDeUsuarios autenticador) {
         super(id, tipoDeUsuario, autenticador);
-        this.publicacionesCargadas = new ArrayList<>();
+        this.tienda = new ArrayList<>();
+        this.mediosDePagoAceptados = new ArrayList<>();
     }
 
     public void cargarPublicacion(Publicacion publicacionNueva) {
-        publicacionesCargadas.add(publicacionNueva);
+        tienda.add(publicacionNueva);
     }
 }
 

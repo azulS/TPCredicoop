@@ -2,7 +2,6 @@ package domain.models.entities.productos;
 
 import domain.Persistente;
 import domain.models.entities.usuario.Gestor;
-import domain.models.entities.usuario.GestorDeUsuarios;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +28,7 @@ public class Producto extends Persistente {
     @Column
     private int tiempoDeFabricacion;
     @OneToMany
-    private List<PosiblePersonalizacion> posiblesPersonalizaciones;
+    private List<PersonalizacionGestores> posiblesPersonalizaciones;
 
 public Producto(){
     this.posiblesPersonalizaciones= new ArrayList<>();

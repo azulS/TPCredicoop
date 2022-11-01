@@ -23,10 +23,12 @@ public class CarritoDeCompras extends Persistente{
     private int monto;
 
     @OneToMany
+    @Column (name = "estadoCarrito")
     private List<EstadoCarrito> estadoCarrito;
 
     @OneToMany
-    private List<Item> contenidoCarrito;
+    @Column (name = "contenidoCarrito")
+    private List<ContenidoCarrito> contenidoCarrito;
     public CarritoDeCompras(Comprador comprador){
         this.estadoCarrito =new ArrayList<>();
         this.monto= 0;
@@ -50,7 +52,7 @@ public class CarritoDeCompras extends Persistente{
 //    public void setEstado(EstadoCarrito estado){
 //        this.estadoCarrito = estado;
 //    }
-//    public void agregarPublicacionACarrito(Item publicacionNueva){
+//    public void agregarPublicacionACarrito(ContenidoCarrito publicacionNueva){
 //        contenidoCarrito.add(publicacionNueva);
 //        this.setEstado(EstadoCarrito.SIN_PAGAR);
 //    }

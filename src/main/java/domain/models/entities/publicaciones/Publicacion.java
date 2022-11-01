@@ -1,8 +1,6 @@
 package domain.models.entities.publicaciones;
 
 import domain.Persistente;
-import domain.models.entities.productos.AreaDePersonalizacion;
-import domain.models.entities.productos.Producto;
 import domain.models.entities.usuario.GestorDeUsuarios;
 import domain.models.entities.usuario.Vendedor;
 import lombok.Getter;
@@ -19,9 +17,10 @@ import javax.persistence.*;
 @Setter
 public class Publicacion extends Persistente {
     @ManyToOne
+    @JoinColumn (name = "vendedor_id", referencedColumnName = "id")
     private Vendedor vendedor;
     @OneToOne
-    private PersonalizacionPublicacion productoPersonalizado;
+    private ProductoALaVenta productoPersonalizado;
     @OneToMany
     private List<EstadoDeLaPublicacion> estadosDePublicacion;
 

@@ -6,13 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table
-public class Personalizacion extends Persistente {
+public class PersonalizacionVendedores extends Persistente {
     @Column
     private String contenido;
     @OneToOne

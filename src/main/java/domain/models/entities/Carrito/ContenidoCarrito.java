@@ -9,24 +9,24 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Item")
+@Table(name="ContenidoCarrito")
 @Getter
 @Setter
-public class Item extends Persistente {
+public class ContenidoCarrito extends Persistente {
 
     @ManyToOne
     @JoinColumn(name="carrito_id", referencedColumnName = "id")
     private CarritoDeCompras carrito;
 
     @OneToOne
-    private Publicacion publicacion;
+    private Publicacion item;
     
     @Column
     private int cantidad;
 
     // TODO: 31/10/2022 que hago con el id del item? 
     
-//    public Item(Publicacion publicacion, PrecioPorArea areaSeleccionada) {
+//    public ContenidoCarrito(Publicacion publicacion, PrecioPorArea areaSeleccionada) {
 //        this.publicacion = publicacion;
 //    }
 

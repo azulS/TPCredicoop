@@ -12,25 +12,31 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.persistence.Entity;
 
-@Table(name="Usuario")
+//@Table(name="Usuario")
 @Entity
 @Setter
 @Getter
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name="tipoDeUsuario",
+//        discriminatorType = DiscriminatorType.STRING)
 public abstract class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column
-     private String password;
+    private String password;
     @Enumerated(EnumType.STRING)
     private TipoDeUsuario tipoDeUsuario;
 
-             public void setId(Long id) {
+    public void setId(Long id) {
                  this.id = id;
              }
 
-             public Usuario(String id, TipoDeUsuario tipoDeUsuario, GestorDeUsuarios autenticador) {
+    public Usuario() {
+    }
+
+    public Usuario(String id, TipoDeUsuario tipoDeUsuario, GestorDeUsuarios autenticador) {
         //este seria el constructor para el usuario COMPRADOR
         this.password= null;
 //        this.tipoDeUsuario = tipoDeUsuario;

@@ -12,9 +12,9 @@ import java.util.List;
 @Setter
 @Table
 @Entity
-public class PosiblePersonalizacion extends Persistente {
+public class PersonalizacionGestores extends Persistente {
     @ManyToOne
-    @JoinColumn(name = "personalizacion_id", referencedColumnName= "id")
+    @JoinColumn(name = "producto_id", referencedColumnName= "id")
     private Producto producto;
 
     @OneToOne
@@ -23,7 +23,7 @@ public class PosiblePersonalizacion extends Persistente {
     @OneToMany
     private List<TipoDePersonalizacion> tiposDePersonalizacion;
 
-    public PosiblePersonalizacion(){
+    public PersonalizacionGestores(){
         this.tiposDePersonalizacion = new ArrayList<>();
     }
 }

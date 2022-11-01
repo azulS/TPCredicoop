@@ -13,16 +13,21 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+//@DiscriminatorValue("comprador")
 public class Comprador extends Usuario
 {
     @OneToMany
     private List<CarritoDeCompras> carritosDeCompras;
 
+    public Comprador() {
+    }
+
     public Comprador(String id, TipoDeUsuario tipoDeUsuario, GestorDeUsuarios autenticador) {
         super(id, tipoDeUsuario, autenticador);
         this.carritosDeCompras = new ArrayList<>();
     }
-//    private EstadoCarrito estadoCarrito = EstadoCarrito.VACIO;
+
+    //    private EstadoCarrito estadoCarrito = EstadoCarrito.VACIO;
 
 
     public void abrirNuevoCarrito(CarritoDeCompras carritoDeCompras) {
