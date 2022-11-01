@@ -15,16 +15,14 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-//@DiscriminatorValue("vendedor")
-@NoArgsConstructor
+@DiscriminatorValue("vendedor")
 public class Vendedor extends Usuario {
     @OneToMany
     private List<Publicacion> tienda;
 
     @OneToMany
     private List<MedioDePago> mediosDePagoAceptados;
-    public Vendedor(String id, TipoDeUsuario tipoDeUsuario, GestorDeUsuarios autenticador) {
-        super(id, tipoDeUsuario, autenticador);
+    public Vendedor() {
         this.tienda = new ArrayList<>();
         this.mediosDePagoAceptados = new ArrayList<>();
     }

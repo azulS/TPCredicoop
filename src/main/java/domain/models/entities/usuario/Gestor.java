@@ -14,13 +14,11 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-//@DiscriminatorValue("gestor")
-@NoArgsConstructor
+@DiscriminatorValue("gestor")
 public class Gestor extends Usuario {
     @OneToMany
     private List<Producto> productosCargados;
-    public Gestor(GestorDeUsuarios autenticador, String id, TipoDeUsuario tipoDeUsuario){
-        super (id, tipoDeUsuario, autenticador);
+    public Gestor(){
         this.productosCargados= new ArrayList<>();
     }
 //    public void cargarProducto (Producto productoNuevo){
