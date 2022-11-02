@@ -1,17 +1,16 @@
 package domain.models.entities.productos;
 
 import domain.Persistente;
-import domain.models.entities.usuario.GestorDeUsuarios;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="TipoDePersonalizacion")
+@Table(name="TecnicaDeImpresion")
 @Getter
 @Setter
-public class TipoDePersonalizacion extends Persistente {
+public class TecnicaDeImpresion extends Persistente {
 
     @Column
     public String nombre;

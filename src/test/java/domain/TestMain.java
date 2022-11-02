@@ -24,20 +24,20 @@ package domain;
 //        remera.setPrecioBase(500);
 //        remera.setTiempoDeFabricacion(4);
 //
-//        AreaDePersonalizacion pecho = new AreaDePersonalizacion();
+//        AreaDeImpresion pecho = new AreaDeImpresion();
 //        pecho.setNombre("pecho");
 //
-//        TipoDePersonalizacion pintura = new TipoDePersonalizacion();
+//        TecnicaDeImpresion pintura = new TecnicaDeImpresion();
 //        pintura.setNombre("pintura:");
 //        pintura.setDescripcion("pintura sublimada");
 //        pecho.agregarTipoDePersonalizacion(pintura);
 //
-//        TipoDePersonalizacion stencil = new TipoDePersonalizacion();
+//        TecnicaDeImpresion stencil = new TecnicaDeImpresion();
 //        stencil.setNombre("stencil:");
 //        stencil.setDescripcion("aerografo");
 //        pecho.agregarTipoDePersonalizacion(stencil);
 //
-//        AreaDePersonalizacion espalda = new AreaDePersonalizacion();
+//        AreaDeImpresion espalda = new AreaDeImpresion();
 //        espalda.setNombre("espalda");
 //
 //        remera.agregarAreaDePersonalizacion(pecho);
@@ -45,7 +45,7 @@ package domain;
 //
 //        remera.printProducto();
 //
-//        AreaDePersonalizacion areaDePersonalizacion = new AreaDePersonalizacion();
+//        AreaDeImpresion areaDePersonalizacion = new AreaDeImpresion();
 //        //String inputDelUsuario = lee del usuario el nombre del producto
 ////        areaDePersonalizacion.setNombre(inputDelUsuario);
 //    }

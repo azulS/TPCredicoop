@@ -4,6 +4,7 @@ import domain.Persistente;
 import domain.models.entities.usuario.GestorDeUsuarios;
 import domain.models.entities.usuario.Vendedor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -15,12 +16,13 @@ import javax.persistence.*;
 @Table(name="Publicacion")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Publicacion extends Persistente {
     @ManyToOne
-    @JoinColumn (name = "vendedor_id", referencedColumnName = "id")
-    private Vendedor vendedor;
+    @JoinColumn (name = "usuario_id", referencedColumnName = "id")
+    private Vendedor usuario;
     @OneToOne
-    private ProductoALaVenta productoPersonalizado;
+    private ContenidoPublicacion contenidoPublicacion;
     @OneToMany
     private List<EstadoDeLaPublicacion> estadosDePublicacion;
 
@@ -36,7 +38,7 @@ public class Publicacion extends Persistente {
     //o pongo como condicion que exista producto Base asi no crashea
 
     // TODO: 27/9/2022 publicacion es composicion con producto, acomodar para que conozca al producto base
-//    public void setNuevoPrecioPorArea(PrecioPorArea precioPorArea, int precio, String nombreNuevo, AreaDePersonalizacion area){
+//    public void setNuevoPrecioPorArea(PrecioPorArea precioPorArea, int precio, String nombreNuevo, AreaDeImpresion area){
 //        precioPorArea.setNombre(nombreNuevo);
 //        precioPorArea.setAreaDePersonalizacion(area);
 //        precioPorArea.setPrecio(precio);

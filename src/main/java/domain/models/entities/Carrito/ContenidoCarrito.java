@@ -1,6 +1,7 @@
 package domain.models.entities.Carrito;
 
 import domain.Persistente;
+import domain.models.entities.publicaciones.PersonalizacionVendedores;
 import domain.models.entities.publicaciones.Publicacion;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +20,7 @@ public class ContenidoCarrito extends Persistente {
     private CarritoDeCompras carrito;
 
     @OneToOne
-    private Publicacion item;
+    private PersonalizacionVendedores personalizacionVendedores;
     
     @Column
     private int cantidad;

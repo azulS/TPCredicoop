@@ -9,9 +9,6 @@ import javax.persistence.*;
 @Getter
 public class MedioDePago extends Persistente {
 
-    @ManyToOne
-    @JoinColumn(name="publicacion_id", referencedColumnName="id")
-    private Publicacion publicacion;
     @Column
     private String medioDePago;
 

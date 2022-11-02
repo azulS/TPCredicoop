@@ -6,27 +6,27 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "EstadoCarrito")
 @Getter
 @Setter
-public class EstadoCarrito extends Persistente {
+@Table
 
-    @ManyToOne
-    @JoinColumn (name = "carritoDeCompras_id", referencedColumnName= "id")
-    private CarritoDeCompras carrito;
+public class PagoCarrito extends Persistente {
+
+    @Column
+    private int monto;
 
     @OneToOne
-    private MedioDePago formaDePago;
+    private MedioDePago medioDePago;
 
     @OneToMany
+    @Column (name = "estadoCarrito")
     private List<EstadoCompra> estadoDeCompra;
 
-    public EstadoCarrito(){
-        this.estadoDeCompra= new ArrayList<>();
+    public PagoCarrito (){
+        this.estadoDeCompra =new ArrayList<>();
     }
 }

@@ -1,7 +1,6 @@
 package domain.models.entities.usuario;
 
 import domain.models.entities.Carrito.CarritoDeCompras;
-import domain.models.entities.Carrito.EstadoCarrito;
 import domain.models.entities.publicaciones.MedioDePago;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,11 +29,11 @@ public class Comprador extends Usuario {
     }
     // TODO: 27/9/2022 como abro un carrito de compras?
 
-    public void setEstadoCarrito(EstadoCarrito estadoCarrito){
+//    public void setEstadoCarrito(EstadoCarrito estadoCarrito){
 //        this.estadoCarrito = estadoCarrito;
 //        carritoDeCompras.setEstado(estadoCarrito);
         //Solo lo puede hacer el vendedor
-    }
+//    }
 
     //por cada publicacion del carrito:
     //1-mostrar medios de pago disponibles

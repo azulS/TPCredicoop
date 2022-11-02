@@ -19,8 +19,8 @@ public class Producto extends Persistente {
     @Column
     private String nombre;
     @ManyToOne
-    @JoinColumn(name="gestor_id", referencedColumnName="id")
-    private Gestor user;
+    @JoinColumn(name="usuario_id", referencedColumnName="id")
+    private Gestor usuario;
     @Column
     private String descripcion;
     @Column
@@ -28,18 +28,18 @@ public class Producto extends Persistente {
     @Column
     private int tiempoDeFabricacion;
     @OneToMany
-    private List<PersonalizacionGestores> posiblesPersonalizaciones;
+    private List<PersonalizacionGestores> personalizacionGestores;
 
 public Producto(){
-    this.posiblesPersonalizaciones= new ArrayList<>();
+    this.personalizacionGestores= new ArrayList<>();
 }
 
-//    public void agregarAreaDePersonalizacion(AreaDePersonalizacion nuevaAreaDisponible){
+//    public void agregarAreaDePersonalizacion(AreaDeImpresion nuevaAreaDisponible){
 ////        if (autenticador.esGestor(user)) {
 //            this.areasBase.add(nuevaAreaDisponible);
 ////        }
     }
-//    public void agregarTiposDePersonalizacion(TipoDePersonalizacion nuevoTipoDePersonalizacion){
+//    public void agregarTiposDePersonalizacion(TecnicaDeImpresion nuevoTipoDePersonalizacion){
 ////        if (autenticador.esGestor(user)) {
 //            this.tiposDePersonalizacion.add(nuevoTipoDePersonalizacion);
 ////        }

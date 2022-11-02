@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +16,17 @@ import java.util.List;
 @DiscriminatorValue("vendedor")
 public class Vendedor extends Usuario {
     @OneToMany
-    private List<Publicacion> tienda;
+    private List<Publicacion> publicaciones;
 
     @OneToMany
     private List<MedioDePago> mediosDePagoAceptados;
     public Vendedor() {
-        this.tienda = new ArrayList<>();
+        this.publicaciones = new ArrayList<>();
         this.mediosDePagoAceptados = new ArrayList<>();
     }
 
     public void cargarPublicacion(Publicacion publicacionNueva) {
-        tienda.add(publicacionNueva);
+        publicaciones.add(publicacionNueva);
     }
 }
 

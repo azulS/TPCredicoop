@@ -1,12 +1,8 @@
 package domain.models.entities.usuario;
 
-import domain.Persistente;
 import domain.models.entities.Carrito.CarritoDeCompras;
-import domain.models.entities.Carrito.EstadoCarrito;
 import domain.models.entities.publicaciones.MedioDePago;
-import domain.models.entities.ServicioExterno;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -20,11 +16,10 @@ import javax.persistence.Entity;
 @Setter
 @Getter
 
-
 public abstract class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id" , nullable = false)
     private Long id;
     @Column
     private String password;

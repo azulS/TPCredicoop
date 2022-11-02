@@ -18,12 +18,12 @@ public class PersonalizacionGestores extends Persistente {
     private Producto producto;
 
     @OneToOne
-    private AreaDePersonalizacion areasBase;
+    private AreaDeImpresion areasDeImpresion;
 
     @OneToMany
-    private List<TipoDePersonalizacion> tiposDePersonalizacion;
+    private List<TecnicaDeImpresion> tecnicaDeImpresion;
 
     public PersonalizacionGestores(){
-        this.tiposDePersonalizacion = new ArrayList<>();
+        this.tecnicaDeImpresion = new ArrayList<>();
     }
 }

@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Table
 public class EstadoCompra extends Persistente {
     @ManyToOne
-    @JoinColumn (name = "EstadoCarrito_id", referencedColumnName= "id")
-    private EstadoCarrito estadoCarrito;
+    @JoinColumn (name = "CarritoDeCompras_id", referencedColumnName= "id")
+    private CarritoDeCompras carritoDeCompras;
 
     @Column
     private LocalDateTime fechaYhora;
