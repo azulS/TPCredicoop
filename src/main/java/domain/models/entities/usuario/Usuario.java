@@ -31,9 +31,7 @@ public abstract class Usuario {
 
     public Usuario() {
     }
-    public void confirmarPago(CarritoDeCompras carrito_id, boolean respuesta){
-        carrito_id.setPagoCarrito();
-    }
+
 
     // TODO: 16/9/2022 hacer excepciones try...catch por si se confundio la contrasenia al entrar
 

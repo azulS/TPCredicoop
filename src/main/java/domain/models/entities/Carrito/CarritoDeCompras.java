@@ -32,6 +32,10 @@ public class CarritoDeCompras extends Persistente {
         this.pagoCarrito = new PagoCarrito();
     }
 
+    public void vendedorDeCarrito(){
+        this.
+    }
+
     public void agregarContenidoCarrito(ContenidoCarrito contenidoNuevo){
         this.contenidoCarrito.add(contenidoNuevo);
     }

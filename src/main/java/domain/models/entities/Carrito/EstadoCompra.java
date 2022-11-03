@@ -23,8 +23,10 @@ public class EstadoCompra extends Persistente {
     @Enumerated (EnumType.STRING)
     @Column (name = "estadoDelPago")
     private EstadoPagos estado;
-    public EstadoCompra(){
-        setEstado(EstadoPagos.CARRITO_VACIO);
+    public EstadoCompra(CarritoDeCompras carrito, EstadoPagos estado){
+        setEstado(estado);
+        setFechaYhora(LocalDateTime.now());
+        setCarritoDeCompras(carrito);
     }
 
 }

@@ -1,13 +1,18 @@
 package domain.models.entities.usuario;
 
 import domain.models.entities.Carrito.CarritoDeCompras;
+import domain.models.entities.Carrito.EstadoCompra;
+import domain.models.entities.Carrito.EstadoPagos;
 import domain.models.entities.publicaciones.MedioDePago;
+import domain.models.entities.publicaciones.PersonalizacionVendedores;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static domain.models.entities.Carrito.EstadoPagos.PENDIENTE_PAGO;
 
 @Entity
 @Setter
@@ -21,22 +26,14 @@ public class Comprador extends Usuario {
         this.carritosDeCompras = new ArrayList<>();
     }
 
+    public void agregarCarrito(CarritoDeCompras carritoDeCompras){
+        this.carritosDeCompras.add(carritoDeCompras);
+    }
+    public void pagarCarrito(CarritoDeCompras carrito) {
+        EstadoCompra esperandoPago= new EstadoCompra(carrito, PENDIENTE_PAGO);
+        carrito.getPagoCarrito().agregarEstadoCompra(esperandoPago);
+        vendedor.confirmarPago(carrito);
 
-//    public void setEstadoCarrito(EstadoCarrito estadoCarrito){
-//        this.estadoCarrito = estadoCarrito;
-//        carritoDeCompras.setEstado(estadoCarrito);
-        //Solo lo puede hacer el vendedor
-//    }
-
-    public void pagarCarrito(MedioDePago medioDePago) {
-//        carritoDeCompras.getContenidoCarrito().forEach(p -> {
-////            p.getPublicacion().printMediosDePago();
-//            for (MedioDePago m : p.getPublicacion().getMediosDePago()) {
-//                if (m.equals(medioDePago)) {
-//                    p.getPublicacion().getVendedor().aceptarPago(medioDePago, carritoDeCompras.getMonto(), this);
-//                }
-//            }
-//        });
-   }
+    }
 }
 
