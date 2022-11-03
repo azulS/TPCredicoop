@@ -11,9 +11,7 @@ public class MedioDePago extends Persistente {
 
     @Column
     private String medioDePago;
-
-    public void setMedioDePago(String nombreMedio, String user) {
-         this.medioDePago = nombreMedio;
-
-    }
+    
 }
+
+// TODO: 3/11/2022  hace falta este objeto? 

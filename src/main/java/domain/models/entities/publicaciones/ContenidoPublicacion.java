@@ -20,12 +20,16 @@ public class ContenidoPublicacion extends Persistente {
     private String nombre;
     @ManyToOne
     private Producto producto;
-    @OneToMany
-    private List<PersonalizacionVendedores> personalizacionesVendedores;
     @Column
     private int precio;
+    @OneToMany
+    private List<PersonalizacionVendedores> personalizacionesVendedores;
 
     public ContenidoPublicacion(){
         this.personalizacionesVendedores =new ArrayList<>();
+    }
+
+    public void agregarPersonalizacionVendedor(PersonalizacionVendedores personalizacionNueva){
+        this.personalizacionesVendedores.add(personalizacionNueva);
     }
 }

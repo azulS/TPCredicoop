@@ -25,22 +25,5 @@ public class ContenidoCarrito extends Persistente {
     @Column
     private int cantidad;
 
-    // TODO: 31/10/2022 que hago con el id del item? 
-    
-//    public ContenidoCarrito(Publicacion publicacion, PrecioPorArea areaSeleccionada) {
-//        this.publicacion = publicacion;
-//    }
-
-  //  public void agregarItem() {
-     //   carritoDeCompras.agregarItemACarrito(this);
-    //}
-
-    //public int getPecioItem() {
-    //    return this.publicacion.getPrecioPersonalizacion();}
-    // TODO: 28/9/2022  
-    // Hacer todos los setters de manera de que sea una condicion que la publicacion 
-    // tenga el area seleccionada que se seleccion
-
-    // TODO: 28/9/2022 hay que setear el medio de pago aca? 
 
 }

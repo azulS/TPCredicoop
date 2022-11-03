@@ -16,6 +16,7 @@ public class CompradorController {
         // TODO: 2/11/2022  el comprador no se crea una cuenta pero si tiene una cuenta, como hago?
         List<CarritoDeCompras> carritos = new ArrayList<>(); // TODO: 2/11/2022 tengo que crear una lista nueva?
         return carritos;
+        // TODO: 3/11/2022 tendria que ponerle un limite a la cantidad de carritos del usuario
     }
 
     @PutMapping("/nuevo")
@@ -26,21 +27,21 @@ public class CompradorController {
         return carritos; // TODO: 2/11/2022 no entiendo porque no me deja poner carrito
     }
 
-    @GetMapping("/2") // TODO: 2/11/2022 que hacemos con ese id_carrito?
-    public CarritoDeCompras verContenido(2) {
-        return dos.getContenidoCarrito().forEach();
+    @GetMapping("/{carritoDeComprasId}") // TODO: 2/11/2022 que hacemos con ese id_carrito?
+    public CarritoDeCompras verContenido(@PathVariable ("carritoDeComprasId") Integer idCarrito) {
+        return idCarrito.getContenidoCarrito().forEach();
     }
 
-    @GetMapping("/2/estado")
-    public CarritoDeCompras verEstado(2) {
-        return 2.getPagoCarrito().getEstadoDeCompra();
+    @GetMapping("/{carritoDeComprasId}/estado")
+    public CarritoDeCompras verEstado({carritoDeComprasId}) {
+        return {carritoDeComprasId}.getPagoCarrito().getEstadoDeCompra();
     }
 
-    @PutMapping("/2/pagar")
+    @PutMapping("/{carritoDeComprasId}/pagar")
 
 
-    @PutMapping("/2/cantidad=3")
+    @PutMapping("/{carritoDeComprasId}/cantidad=3")
 
-    @PutMapping("/2/medio=3")
+    @PutMapping("/{carritoDeComprasId}/medio=3")
 
 }

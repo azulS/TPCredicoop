@@ -26,4 +26,8 @@ public class PersonalizacionGestores extends Persistente {
     public PersonalizacionGestores(){
         this.tecnicaDeImpresion = new ArrayList<>();
     }
+
+    public void agregarTecnicaDeImpresion(TecnicaDeImpresion tecnicaNueva){
+        this.tecnicaDeImpresion.add(tecnicaNueva);
+    }
 }

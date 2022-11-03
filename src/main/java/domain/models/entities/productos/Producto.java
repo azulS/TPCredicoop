@@ -19,7 +19,7 @@ public class Producto extends Persistente {
     @Column
     private String nombre;
     @ManyToOne
-    @JoinColumn(name="usuario_id", referencedColumnName="id")
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Gestor usuario;
     @Column
     private String descripcion;
@@ -30,58 +30,10 @@ public class Producto extends Persistente {
     @OneToMany
     private List<PersonalizacionGestores> personalizacionGestores;
 
-public Producto(){
-    this.personalizacionGestores= new ArrayList<>();
-}
-
-//    public void agregarAreaDePersonalizacion(AreaDeImpresion nuevaAreaDisponible){
-////        if (autenticador.esGestor(user)) {
-//            this.areasBase.add(nuevaAreaDisponible);
-////        }
+    public Producto() {
+        this.personalizacionGestores = new ArrayList<>();
     }
-//    public void agregarTiposDePersonalizacion(TecnicaDeImpresion nuevoTipoDePersonalizacion){
-////        if (autenticador.esGestor(user)) {
-//            this.tiposDePersonalizacion.add(nuevoTipoDePersonalizacion);
-////        }
-//    }
-//    public void setNombre(String nombre) {
-////        if (autenticador.esGestor(user)) {
-//            this.nombre = nombre;
-////        }
-//    }
-//    public void setPrecioBase(int precioBase) {
-////        if (autenticador.esGestor(user)) {
-//            this.precioBase = precioBase;
-////        }
-//    }
-//
-//    public void setDescripcion(String descripcion) {
-////        if (autenticador.esGestor(user)) {
-//        this.descripcion = descripcion;
-////        }
-//    }
-//    public void setTiempoDeFabricacion(int tiempoDeFabricacion) {
-////        if (autenticador.esGestor(user)) {
-//            this.tiempoDeFabricacion = tiempoDeFabricacion;
-////        }
-//    }
-////    public void printAreasDisponibles() {
-////        areasBase.forEach(a -> {
-////            System.out.println(a.getNombre());
-////            });
-////    }
-////    public void printProducto(){
-////        System.out.println(this.getNombre());
-////        System.out.println(this.getDescripcion());
-////        System.out.println(this.getPrecioBase() + "pesos");
-////        System.out.println(this.getTiempoDeFabricacion() + "dias");
-////        this.printAreasDisponibles();
-////    }
-//
-//    public void getTiposDePersonalizacion() {
-////        tiposDePersonalizacion.forEach(t-> {
-////            System.out.println(t.getNombre());
-////            System.out.println(t.getDescripcion());
-////        });
-//    }
-
+    public void agregarPersonalizacionGestores(PersonalizacionGestores personalizacionNueva) {
+        this.personalizacionGestores.add(personalizacionNueva);
+    }
+}

@@ -31,11 +31,8 @@ public abstract class Usuario {
 
     public Usuario() {
     }
-    public void aceptarPago(MedioDePago medioDePago, CarritoDeCompras pedido, int monto, Usuario usuario){
-//        if (pedido.getMonto() == monto) {
-//       //     ServicioExterno.emitirFactura(medioDePago, monto, usuario.getId(), this.id);
-//            pedido.setEstado(EstadoCarrito.PAGADO);
-//        }
+    public void confirmarPago(CarritoDeCompras carrito_id, boolean respuesta){
+        carrito_id.setPagoCarrito();
     }
 
     // TODO: 16/9/2022 hacer excepciones try...catch por si se confundio la contrasenia al entrar

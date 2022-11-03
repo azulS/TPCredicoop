@@ -21,13 +21,6 @@ public class Comprador extends Usuario {
         this.carritosDeCompras = new ArrayList<>();
     }
 
-    //    private EstadoCarrito estadoCarrito = EstadoCarrito.VACIO;
-
-    public void abrirNuevoCarrito(CarritoDeCompras carritoDeCompras) {
-//        this.carritoDeCompras = carritoDeCompras;
-//        this.estadoCarrito = carritoDeCompras.getEstadoCarrito();
-    }
-    // TODO: 27/9/2022 como abro un carrito de compras?
 
 //    public void setEstadoCarrito(EstadoCarrito estadoCarrito){
 //        this.estadoCarrito = estadoCarrito;
@@ -35,10 +28,6 @@ public class Comprador extends Usuario {
         //Solo lo puede hacer el vendedor
 //    }
 
-    //por cada publicacion del carrito:
-    //1-mostrar medios de pago disponibles
-    // 2-si uno de los medios de pago disponibles es igual al parametro de pagarCarrito
-    // 3- enviarle el medio de pago al vendedor
     public void pagarCarrito(MedioDePago medioDePago) {
 //        carritoDeCompras.getContenidoCarrito().forEach(p -> {
 ////            p.getPublicacion().printMediosDePago();
@@ -50,5 +39,4 @@ public class Comprador extends Usuario {
 //        });
    }
 }
-// TODO: 27/9/2022 intentar agrupar en el carrito los productos segun cada vendedor
-//definir un else si no coincide con ninguno de los medios de pago disponibles el medio cargado
+
