@@ -2,31 +2,38 @@ package domain.models.entities.usuario;
 
 import domain.models.entities.Carrito.CarritoDeCompras;
 import domain.models.entities.Carrito.EstadoCompra;
+import domain.models.entities.ServicioExterno;
 import domain.models.entities.publicaciones.MedioDePago;
 import domain.models.entities.publicaciones.Publicacion;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.transaction.TransactionUsageException;
 
 import javax.persistence.*;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static domain.models.entities.Carrito.EstadoPagos.PENDIENTE_PAGO;
+import static domain.models.entities.Carrito.EstadoPagos.*;
 
 @Entity
 @Getter
 @Setter
 @DiscriminatorValue("vendedor")
 public class Vendedor extends Usuario {
+    @OneToOne   ServicioExterno afip;
+    // TODO: 4/11/2022 hay que pulir la joda del servicio externo 
     @OneToMany
     private List<Publicacion> publicaciones;
     @OneToMany
     private List<MedioDePago> mediosDePagoAceptados;
+    
+    @ElementCollection 
+    private List<Integer> facturasElectronicas;
+    
     public Vendedor() {
         this.publicaciones = new ArrayList<>();
         this.mediosDePagoAceptados = new ArrayList<>();
+        this.facturasElectronicas = new ArrayList<>();
     }
     public void agregarPublicacion(Publicacion publicacionNueva){
         this.publicaciones.add(publicacionNueva);
@@ -35,31 +42,19 @@ public class Vendedor extends Usuario {
         this.mediosDePagoAceptados.add(medioNuevo);
     }
 
-    public InputStream aceptar(InputStream respuesta){
-        return respuesta;
-    }
     public void confirmarPago(CarritoDeCompras carrito){
-        if (this.aceptar(System.in)) {
-            EstadoCompra pagoAceptado = new EstadoCompra(carrito, PENDIENTE_PAGO);
+        if (System.console().readLine()== "Y") {
+            EstadoCompra pagoAceptado = new EstadoCompra(carrito, CONFIRMADO);
+            carrito.getPagoCarrito().agregarEstadoCompra(pagoAceptado);
+            Integer facturaNueva = Integer.valueOf(this.afip.generarFacturaElectronica(carrito));
+            this.facturasElectronicas.add(facturaNueva);
+        }
+        else {
+            EstadoCompra pagoAceptado = new EstadoCompra(carrito, RECHAZADO);
             carrito.getPagoCarrito().agregarEstadoCompra(pagoAceptado);
         }
-
-
-    }
-    public void cargarPublicacion(Publicacion publicacionNueva) {
-        publicaciones.add(publicacionNueva);
     }
 }
 
-//    public void aceptarPago(MedioDePago medioDePago, int monto, Comprador comprador) {
-//    //    ServicioExterno.emitirFactura(medioDePago, monto, comprador.getId(), this.getId());
-//        //solo le envia el mensaje al comprador si se logra pagar el carrito, ver la excepcion
-//        comprador.setEstadoCarrito(EstadoCarrito.PAGADO);
-//    }
-//}
-
-// TODO: 3/11/2022
-// hacer un metodo donde el comprador le pasa info al vendedor del carrito y zaraza para que luego el
-// vendedor agarre esa info y se la envie al servicio externo
-
+// TODO: 4/11/2022 asumi que la factura que le genera afip simplemente es un codigo de barras o algo asi 
 

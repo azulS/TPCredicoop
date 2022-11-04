@@ -15,7 +15,6 @@ import javax.persistence.Entity;
         name="tipoDeUsuario")
 @Setter
 @Getter
-
 public abstract class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,12 +22,6 @@ public abstract class Usuario {
     private Long id;
     @Column
     private String password;
-    @Enumerated(EnumType.STRING)
-
-    public void setId(Long id) {
-                 this.id = id;
-             }
-
     public Usuario() {
     }
 

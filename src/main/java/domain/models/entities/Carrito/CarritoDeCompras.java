@@ -2,6 +2,7 @@ package domain.models.entities.Carrito;
 
 import domain.Persistente;
 import domain.models.entities.usuario.Comprador;
+import domain.models.entities.usuario.Vendedor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,9 @@ public class CarritoDeCompras extends Persistente {
     private Comprador user;
 
     @OneToOne
+    private Vendedor vendedor;
+
+    @OneToOne
     private PagoCarrito pagoCarrito;
 
     @OneToMany
@@ -32,14 +36,11 @@ public class CarritoDeCompras extends Persistente {
         this.pagoCarrito = new PagoCarrito();
     }
 
-    public void vendedorDeCarrito(){
-        this.
-    }
-
     public void agregarContenidoCarrito(ContenidoCarrito contenidoNuevo){
         this.contenidoCarrito.add(contenidoNuevo);
     }
 }
+
 
 //    // TODO: 16/9/2022  hacer una excepcion respecto al servicio externo del que te hace la factura.
 //    //  lo mismo una excepcion por si no me aceptan el pago (dos try...catch)

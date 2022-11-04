@@ -32,8 +32,7 @@ public class Comprador extends Usuario {
     public void pagarCarrito(CarritoDeCompras carrito) {
         EstadoCompra esperandoPago= new EstadoCompra(carrito, PENDIENTE_PAGO);
         carrito.getPagoCarrito().agregarEstadoCompra(esperandoPago);
-        vendedor.confirmarPago(carrito);
-
+        carrito.getVendedor().confirmarPago(carrito);
     }
 }
 
