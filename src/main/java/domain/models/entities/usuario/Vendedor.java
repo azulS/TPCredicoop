@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +19,10 @@ import static domain.models.entities.Carrito.EstadoPagos.*;
 @Setter
 @DiscriminatorValue("vendedor")
 public class Vendedor extends Usuario {
-    @OneToOne   ServicioExterno afip;
-    // TODO: 4/11/2022 hay que pulir la joda del servicio externo 
     @OneToMany
     private List<Publicacion> publicaciones;
     @OneToMany
     private List<MedioDePago> mediosDePagoAceptados;
-    
     @ElementCollection 
     private List<Integer> facturasElectronicas;
     
@@ -46,8 +42,12 @@ public class Vendedor extends Usuario {
         if (System.console().readLine()== "Y") {
             EstadoCompra pagoAceptado = new EstadoCompra(carrito, CONFIRMADO);
             carrito.getPagoCarrito().agregarEstadoCompra(pagoAceptado);
-            Integer facturaNueva = Integer.valueOf(this.afip.generarFacturaElectronica(carrito));
+
+            Integer facturaNueva = Integer.valueOf(ServicioExterno.generarFacturaElectronica(carrito));
             this.facturasElectronicas.add(facturaNueva);
+
+            // TODO: 4/11/2022 estaria bueno separarlo en dos subacciones que realiza el vendedor
+            //  o es demaciado minuisioso?
         }
         else {
             EstadoCompra pagoAceptado = new EstadoCompra(carrito, RECHAZADO);
@@ -56,5 +56,7 @@ public class Vendedor extends Usuario {
     }
 }
 
-// TODO: 4/11/2022 asumi que la factura que le genera afip simplemente es un codigo de barras o algo asi 
+// TODO: 4/11/2022 asumi que la factura que le genera afip simplemente es un codigo de barras o algo asi
+// TODO: 4/11/2022 no habria que enviarle al servicio externo TODA la info de carrito
+//      sino la info pertinente para generar la factura
 

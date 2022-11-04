@@ -1,7 +1,6 @@
 package domain.models.entities.publicaciones;
 
 import domain.Persistente;
-import domain.models.entities.usuario.GestorDeUsuarios;
 import domain.models.entities.usuario.Vendedor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,6 @@ import javax.persistence.*;
 @Table(name="Publicacion")
 @Getter
 @Setter
-@NoArgsConstructor
 public class Publicacion extends Persistente {
     @ManyToOne
     @JoinColumn (name = "usuario_id", referencedColumnName = "id")
@@ -25,11 +23,9 @@ public class Publicacion extends Persistente {
     private ContenidoPublicacion contenidoPublicacion;
     @OneToMany
     private List<EstadoDeLaPublicacion> estadosDePublicacion;
-
-    public Publicacion(GestorDeUsuarios autenticador, Vendedor user) {
+    public Publicacion() {
         this.estadosDePublicacion = new ArrayList<>();
     }
-
     public void agregarEstadoDePublicacion(EstadoDeLaPublicacion estadoNuevo){
         this.estadosDePublicacion.add(estadoNuevo);
     }

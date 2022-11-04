@@ -21,8 +21,8 @@ public class Gestor extends Usuario {
     public Gestor(){
         this.productosCargados= new ArrayList<>();
     }
-//    public void cargarProducto (Producto productoNuevo){
-//        productosCargados.add(productoNuevo);
-//    }
+    public void cargarProducto (Producto productoNuevo){
+        productosCargados.add(productoNuevo);
+    }
 
 }
