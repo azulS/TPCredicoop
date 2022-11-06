@@ -24,4 +24,8 @@ public class RepoPublicacionMemoria implements RepoPublicacion {
                 this.publicaciones.subList(desde, desde + pageable.getPageSize());
         return new PageImpl<Publicacion>(subList2, pageable, this.publicaciones.size());
     }
+    @Override
+    public Publicacion porId(Integer idPublicacion) {
+        return this.publicaciones.stream().filter(x->x.getId().equals(idPublicacion)).findFirst().get();
+    }
 }

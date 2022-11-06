@@ -26,4 +26,9 @@ public class RepoProductoMemoria implements RepoProductos{
                 this.productos.subList(desde, desde + pageable.getPageSize());
         return new PageImpl<Producto>(subList2, pageable, this.productos.size());
     }
+
+    @Override
+    public Producto porId(Integer idProducto) {
+        return this.productos.stream().filter(x->x.getId().equals(idProducto)).findFirst().get();
+    }
 }

@@ -25,4 +25,6 @@ public class Gestor extends Usuario {
         productosCargados.add(productoNuevo);
     }
 
+
+
 }

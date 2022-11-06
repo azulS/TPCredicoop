@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface RepoProductos {
     Page<Producto> page(Pageable pageable);
 
+    Producto porId(Integer idProducto);
+
 }

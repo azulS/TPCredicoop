@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepoPublicacion {
     Page<Publicacion> page(Pageable pageable);
+
+    Publicacion porId(Integer idPublicacion);
 }

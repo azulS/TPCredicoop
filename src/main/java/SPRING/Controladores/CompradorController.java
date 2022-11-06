@@ -2,6 +2,7 @@ package SPRING.Controladores;
 
 import SPRING.Repositorios.CarritoDeCompras.RepoCarrito;
 import domain.models.entities.Carrito.CarritoDeCompras;
+import domain.models.entities.Carrito.EstadoCompra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,13 +16,13 @@ import java.util.List;
 public class CompradorController {
 
     @Autowired
-    RepoCarrito repo;
+    RepoCarrito repoCarrito;
     // TODO: 2/11/2022  falta agregar lo del numero de comprador, vendedor y gestor a todo
 
     @GetMapping(path = {"/", " "})
     public Page<CarritoDeCompras> verCarritos(Pageable page) {
         List<CarritoDeCompras> carritos = new ArrayList<>();
-        return repo.page(page);
+        return repoCarrito.page(page);
 
         // TODO: 3/11/2022 tendria que ponerle un limite a la cantidad de carritos del usuario
     }
@@ -36,25 +37,27 @@ public class CompradorController {
 
 
     @GetMapping("/{idCarrito}") // TODO: 2/11/2022 que hacemos con ese id_carrito?
-    public CarritoDeCompras verContenidoCarrito (@PathVariable ("idCarrito") Integer idCarrito){
+    public CarritoDeCompras verContenidoCarrito (@PathVariable ("idCarrito") Integer id){
         try{
-            return repo.porId(idCarrito);
+            return repoCarrito.porId(id);
         }
         catch(Exception e){
             System.out.println("error 404");
             return null;
         }
     }
-//
-//    @GetMapping("/{carritoDeComprasId}/estado")
-//    public CarritoDeCompras verEstado({carritoDeComprasId}) {
-//        return {carritoDeComprasId}.getPagoCarrito().getEstadoDeCompra();
-//    }
-//
-//    @PutMapping("/{carritoDeComprasId}/pagar")
-//
-//    @PutMapping("/{carritoDeComprasId}/cantidad=3")
-//
-//    @PutMapping("/{carritoDeComprasId}/medio=3")
-//
+
+    @GetMapping("/{idCarrito}/estado")
+    public List<EstadoCompra> verEstado(
+            @PathVariable("idCarrito") Integer idCarrito) {
+        try{
+            return repoCarrito.porId(idCarrito).getPagoCarrito().getEstadoDeCompra();
+        }
+        catch (Exception e){
+            System.out.println("error 404");
+            return null;
+
+        }
+    }
+
 }
