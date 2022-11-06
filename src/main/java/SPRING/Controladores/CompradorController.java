@@ -1,7 +1,10 @@
 package SPRING.Controladores;
 
+import SPRING.Repositorios.CarritoDeCompras.RepoCarrito;
 import domain.models.entities.Carrito.CarritoDeCompras;
-import domain.models.entities.usuario.Comprador;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,11 +14,15 @@ import java.util.List;
 @RequestMapping ("/comprador")
 public class CompradorController {
 
-    @GetMapping(path = {"/", " "}) // TODO: 2/11/2022  falta agregar lo del numero de comprador
-    public List<CarritoDeCompras> verCarritos() {
-        // TODO: 2/11/2022  el comprador no se crea una cuenta pero si tiene una cuenta, como hago?
-        List<CarritoDeCompras> carritos = new ArrayList<>(); // TODO: 2/11/2022 tengo que crear una lista nueva?
-        return carritos;
+    @Autowired
+    RepoCarrito repo;
+    // TODO: 2/11/2022  falta agregar lo del numero de comprador a todo
+
+    @GetMapping(path = {"/", " "})
+    public Page<CarritoDeCompras> verCarritos(Pageable page) {
+        List<CarritoDeCompras> carritos = new ArrayList<>();
+        return repo.page(page);
+
         // TODO: 3/11/2022 tendria que ponerle un limite a la cantidad de carritos del usuario
     }
 
@@ -27,21 +34,27 @@ public class CompradorController {
         return carritos; // TODO: 2/11/2022 no entiendo porque no me deja poner carrito
     }
 
-    @GetMapping("/{carritoDeComprasId}") // TODO: 2/11/2022 que hacemos con ese id_carrito?
-    public CarritoDeCompras verContenido(@PathVariable ("carritoDeComprasId") Integer idCarrito) {
-        return idCarrito.getContenidoCarrito().forEach();
+
+    @GetMapping("/{idCarrito}") // TODO: 2/11/2022 que hacemos con ese id_carrito?
+    public CarritoDeCompras verContenidoCarrito (@PathVariable ("idCarrito") Integer idCarrito){
+        try{
+            return repo.porId(idCarrito);
+        }
+        catch(Exception e){
+            System.out.println("error 404");
+            return null;
+        }
     }
-
-    @GetMapping("/{carritoDeComprasId}/estado")
-    public CarritoDeCompras verEstado({carritoDeComprasId}) {
-        return {carritoDeComprasId}.getPagoCarrito().getEstadoDeCompra();
-    }
-
-    @PutMapping("/{carritoDeComprasId}/pagar")
-
-
-    @PutMapping("/{carritoDeComprasId}/cantidad=3")
-
-    @PutMapping("/{carritoDeComprasId}/medio=3")
-
+//
+//    @GetMapping("/{carritoDeComprasId}/estado")
+//    public CarritoDeCompras verEstado({carritoDeComprasId}) {
+//        return {carritoDeComprasId}.getPagoCarrito().getEstadoDeCompra();
+//    }
+//
+//    @PutMapping("/{carritoDeComprasId}/pagar")
+//
+//    @PutMapping("/{carritoDeComprasId}/cantidad=3")
+//
+//    @PutMapping("/{carritoDeComprasId}/medio=3")
+//
 }

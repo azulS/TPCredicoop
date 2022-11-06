@@ -36,6 +36,16 @@ public class CarritoDeCompras extends Persistente {
         this.pagoCarrito = new PagoCarrito();
     }
 
+    @Override
+    public String toString() {
+        return "CarritoDeCompras{" +
+                "user=" + user +
+                ", vendedor=" + vendedor +
+                ", pagoCarrito=" + pagoCarrito +
+                ", contenidoCarrito=" + contenidoCarrito +
+                '}';
+    }
+
     public void agregarContenidoCarrito(ContenidoCarrito contenidoNuevo){
         this.contenidoCarrito.add(contenidoNuevo);
     }
