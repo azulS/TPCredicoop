@@ -1,13 +1,17 @@
 package SPRING.Repositorios.CarritoDeCompras;
 
 import domain.models.entities.Carrito.CarritoDeCompras;
+import domain.models.entities.usuario.Vendedor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 public class RepoCarritoMemoria implements RepoCarrito{
     private List<CarritoDeCompras> carritos;
@@ -18,7 +22,7 @@ public class RepoCarritoMemoria implements RepoCarrito{
     }
 
     @Override
-    public void save(CarritoDeCompras carrito) {
+    public void saveCarrito(CarritoDeCompras carrito) {
         carritos.add(carrito);
         System.out.println(carrito);
     }

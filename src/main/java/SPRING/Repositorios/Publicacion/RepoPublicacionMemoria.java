@@ -1,5 +1,6 @@
 package SPRING.Repositorios.Publicacion;
 
+import SPRING.ERRORES.PubliRepetidaException;
 import domain.models.entities.publicaciones.Publicacion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,5 +28,26 @@ public class RepoPublicacionMemoria implements RepoPublicacion {
     @Override
     public Publicacion porId(Integer idPublicacion) {
         return this.publicaciones.stream().filter(x->x.getId().equals(idPublicacion)).findFirst().get();
+    }
+
+    @Override
+    public void savePublicacion(Publicacion publicacion) {
+        if (this.existePublicacion(publicacion.getContenidoPublicacion().getNombre())) {
+            try {
+                throw new PubliRepetidaException(publicacion);
+            } catch (PubliRepetidaException e) {
+                throw new RuntimeException(e);
+            }
+
+        } else{
+            publicaciones.add(publicacion);
+            System.out.println(publicacion);
+        }
+    }
+
+    @Override
+    public boolean existePublicacion(String nombre){
+        long count = this.publicaciones.stream().filter(publicacion -> publicacion.getContenidoPublicacion().getNombre().equals(nombre)).count();
+        return count >0;
     }
 }

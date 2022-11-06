@@ -20,7 +20,7 @@ public class AppPlataformaLicuadora {
     public CommandLineRunner ejemplo(RepoCarrito repo){
         LinkedList<Integer> list = new LinkedList<Integer>();
         return (cosas) ->{
-            repo.save(new CarritoDeCompras());
+            repo.saveCarrito(new CarritoDeCompras());
             System.out.println(cosas.length);
         };
 

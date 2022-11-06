@@ -10,12 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="Publicacion")
 @Getter
 @Setter
 public class Publicacion extends Persistente {
+    @NotBlank
     @ManyToOne
     @JoinColumn (name = "usuario_id", referencedColumnName = "id")
     private Vendedor usuario;

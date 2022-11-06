@@ -3,6 +3,7 @@ package SPRING.Controladores;
 import SPRING.Repositorios.CarritoDeCompras.RepoCarrito;
 import domain.models.entities.Carrito.CarritoDeCompras;
 import domain.models.entities.Carrito.EstadoCompra;
+import domain.models.entities.usuario.Vendedor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +27,7 @@ public class CompradorController {
 
         // TODO: 3/11/2022 tendria que ponerle un limite a la cantidad de carritos del usuario
     }
+
 
     @PutMapping("/nuevo")
     public List<CarritoDeCompras> nuevoCarritos() {
@@ -59,5 +61,4 @@ public class CompradorController {
 
         }
     }
-
 }

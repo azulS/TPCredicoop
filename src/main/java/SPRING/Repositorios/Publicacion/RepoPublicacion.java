@@ -10,4 +10,8 @@ public interface RepoPublicacion {
     Page<Publicacion> page(Pageable pageable);
 
     Publicacion porId(Integer idPublicacion);
+
+    public void savePublicacion(Publicacion publicacion);
+
+    boolean existePublicacion(String nombre);
 }
