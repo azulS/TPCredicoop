@@ -27,11 +27,13 @@ public class RepoCarritoMemoria implements RepoCarrito{
     public List<CarritoDeCompras> all() {
         return this.carritos;
     }
+    // TODO: 6/11/2022 habria que borrar estos repo.all? 
 
     @Override
     public Page<CarritoDeCompras> page(Pageable pageable) {
         int desde = pageable.getPageNumber()* pageable.getPageSize();
-        List<CarritoDeCompras> subList2 = this.carritos.subList(desde, desde + pageable.getPageSize());
+        List<CarritoDeCompras> subList2 =
+                this.carritos.subList(desde, desde + pageable.getPageSize());
         return new PageImpl<CarritoDeCompras>(subList2, pageable, this.carritos.size());
     }
 

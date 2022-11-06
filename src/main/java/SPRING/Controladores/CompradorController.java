@@ -16,7 +16,7 @@ public class CompradorController {
 
     @Autowired
     RepoCarrito repo;
-    // TODO: 2/11/2022  falta agregar lo del numero de comprador a todo
+    // TODO: 2/11/2022  falta agregar lo del numero de comprador, vendedor y gestor a todo
 
     @GetMapping(path = {"/", " "})
     public Page<CarritoDeCompras> verCarritos(Pageable page) {
