@@ -1,4 +1,4 @@
-package SPRING;
+package domain.app;
 
 import domain.models.entities.productos.Producto;
 import domain.models.entities.usuario.Gestor;

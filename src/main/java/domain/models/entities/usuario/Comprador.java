@@ -20,6 +20,7 @@ import static domain.models.entities.Carrito.EstadoPagos.PENDIENTE_PAGO;
 @DiscriminatorValue("comprador")
 public class Comprador extends Usuario {
     @OneToMany
+    @Transient
     private List<CarritoDeCompras> carritosDeCompras;
 
     public Comprador() {

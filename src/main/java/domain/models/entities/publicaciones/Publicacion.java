@@ -24,6 +24,7 @@ public class Publicacion extends Persistente {
     private Vendedor usuario;
     @OneToOne
     private ContenidoPublicacion contenidoPublicacion;
+    @Transient
     @OneToMany
     private List<EstadoDeLaPublicacion> estadosDePublicacion;
     public Publicacion() {

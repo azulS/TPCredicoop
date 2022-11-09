@@ -12,5 +12,5 @@ import javax.persistence.MappedSuperclass;
 public abstract class Persistente {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 }

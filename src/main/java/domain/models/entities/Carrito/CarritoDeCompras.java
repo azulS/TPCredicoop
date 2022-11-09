@@ -28,6 +28,7 @@ public class CarritoDeCompras extends Persistente {
     @OneToOne
     private PagoCarrito pagoCarrito;
 
+    @Transient
     @OneToMany
     @Column(name = "contenidoCarrito")
     private List<ContenidoCarrito> contenidoCarrito;

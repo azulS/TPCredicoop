@@ -27,6 +27,7 @@ public class Producto extends Persistente {
     private int precioBase;
     @Column
     private int tiempoDeFabricacion;
+    @Transient
     @OneToMany
     private List<PersonalizacionGestores> personalizacionGestores;
 

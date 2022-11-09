@@ -1,17 +1,17 @@
-//package SPRING.Repositorios.Producto;
+//package domain.app.Repositorios.Producto;
 //
-//import SPRING.Repositorios.Publicacion.RepoPublicacionMemoria;
 //import domain.models.entities.productos.Producto;
 //import org.springframework.data.domain.Page;
 //import org.springframework.data.domain.PageImpl;
 //import org.springframework.data.domain.Pageable;
 //import org.springframework.stereotype.Repository;
+//import SPRING.Repositorios.Producto.RepoProductos;
 //
 //import java.util.ArrayList;
 //import java.util.List;
 //
 //@Repository
-//public class RepoProductoMemoria implements RepoProductos{
+//public class RepoProductoMemoria implements RepoProductos {
 //    private List<Producto> productos;
 //
 //    public RepoProductoMemoria(){

@@ -1,8 +1,8 @@
 package domain.models.entities.Carrito;
 
-import com.sun.xml.bind.v2.TODO;
 import domain.Persistente;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Table
 @Getter
 @Setter
+@NoArgsConstructor
 public class EstadoCompra extends Persistente {
     @ManyToOne
     @JoinColumn (name = "CarritoDeCompras_id", referencedColumnName= "id")

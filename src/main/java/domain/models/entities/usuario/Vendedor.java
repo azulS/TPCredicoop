@@ -20,10 +20,13 @@ import static domain.models.entities.Carrito.EstadoPagos.*;
 @DiscriminatorValue("vendedor")
 public class Vendedor extends Usuario {
     @OneToMany
+    @Transient
     private List<Publicacion> publicaciones;
     @OneToMany
+    @Transient
     private List<MedioDePago> mediosDePagoAceptados;
-    @ElementCollection 
+    @ElementCollection
+    @Transient
     private List<Integer> facturasElectronicas;
     
     public Vendedor() {

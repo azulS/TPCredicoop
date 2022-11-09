@@ -1,6 +1,5 @@
 package domain.models.entities.Carrito;
 
-import com.sun.xml.bind.v2.TODO;
 import domain.Persistente;
 import domain.models.entities.publicaciones.MedioDePago;
 import lombok.Getter;
@@ -25,7 +24,7 @@ public class PagoCarrito extends Persistente {
 
     @OneToOne
     private MedioDePago medioDePago;
-
+    @Transient
     @OneToMany
     @Column (name = "estadoCarrito")
     private List<EstadoCompra> estadoDeCompra;

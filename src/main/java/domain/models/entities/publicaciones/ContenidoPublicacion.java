@@ -23,6 +23,7 @@ public class ContenidoPublicacion extends Persistente {
     @Column
     private int precio;
     @OneToMany
+    @Transient
     private List<PersonalizacionVendedores> personalizacionesVendedores;
 
     public ContenidoPublicacion(){

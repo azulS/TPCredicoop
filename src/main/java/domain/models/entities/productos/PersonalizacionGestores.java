@@ -18,8 +18,8 @@ public class PersonalizacionGestores extends Persistente {
     private Producto producto;
 
     @OneToOne
-    private AreaDeImpresion areasDeImpresion;
-
+    private String areasDeImpresion;
+    @Transient
     @OneToMany
     private List<TecnicaDeImpresion> tecnicaDeImpresion;
 
