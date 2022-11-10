@@ -1,5 +1,6 @@
 package domain.app.Repositorios.JPA;
 
+import domain.models.entities.DTOs.GestorDTO;
 import domain.models.entities.usuario.Gestor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 
-@RepositoryRestResource(path = "gestor2")
+@RepositoryRestResource(path = "gestor2",excerptProjection = GestorDTO.class)
 public interface RepoGestorJPA extends JpaRepository<Gestor, Long> {
     @Override
     @RestResource(exported = false)
