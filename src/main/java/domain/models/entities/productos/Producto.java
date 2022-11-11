@@ -27,12 +27,15 @@ public class Producto extends Persistente {
     private int precioBase;
     @Column
     private int tiempoDeFabricacion;
+    @Column
+    private boolean activo;
     @Transient
     @OneToMany
     private List<PersonalizacionGestores> personalizacionGestores;
 
     public Producto() {
         this.personalizacionGestores = new ArrayList<>();
+        this.activo=true;
     }
     public void agregarPersonalizacionGestores(PersonalizacionGestores personalizacionNueva) {
         this.personalizacionGestores.add(personalizacionNueva);
